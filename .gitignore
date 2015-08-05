@@ -17,6 +17,9 @@ DerivedData
 *.ipa
 *.xcuserstate
 
+#The Keys Plist needs to only be stored locally
+keys.plist
+
 # CocoaPods
 #
 # We recommend against adding the Pods directory to your .gitignore. However

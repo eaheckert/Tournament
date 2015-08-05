@@ -5,3 +5,5 @@ platform :ios, '8.0'
 use_frameworks!
 
 pod 'Alamofire', '~> 1.3'
+pod 'Parse', '~>1.7.1'
+pod 'ParseUI', '~>1.1.3'

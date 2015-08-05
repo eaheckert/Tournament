@@ -20,19 +20,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     {
         // Override point for customization after application launch.
         
+        //First check to make sure that plist is in the project
         if let path = NSBundle.mainBundle().pathForResource("keys", ofType: "plist")
         {
+            //Then make sure that the plist contains a NSDictionary
             if let keysDict = NSDictionary(contentsOfFile: path) as? Dictionary<String, String>
             {
+                //Make sure that values unwrap to string values.
                 var applicationIdString:String  = keysDict["parseApplicationId"]!
                 var clientKeyString:String  = keysDict["parseClientKey"]!
                 
+                //Parse Set ApplicationId requires string values for both the ApplicationId and ClientKey
+                //These values tie the app to your Parse App
                 Parse.setApplicationId(applicationIdString, clientKey:clientKeyString)
+            }
+            else
+            {
+                print("ERROR: The keys.plist does not contain a NSDictionary.")
             }
         }
         else
         {
-            print("ERROR: There is currently no keys.plist")
+            print("ERROR: There is currently no keys.plist.")
         }
         
         

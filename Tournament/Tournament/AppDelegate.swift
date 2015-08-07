@@ -20,6 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     {
         // Override point for customization after application launch.
         
+        //If you override a Parse class it will need to be registered in this method
+        loadSubclasses()
+        
         //First check to make sure that plist is in the project
         if let path = NSBundle.mainBundle().pathForResource("keys", ofType: "plist")
         {
@@ -75,6 +78,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    func loadSubclasses()
+    {
+        User.registerSubclass()
+    }
 
 }
 

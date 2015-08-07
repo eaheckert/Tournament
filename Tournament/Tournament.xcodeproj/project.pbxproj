@@ -7,15 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		813DB51F1B71BB23002A3975 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 813DB51D1B71BB23002A3975 /* Info.plist */; };
 		813DB5211B71C662002A3975 /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 813DB5201B71C662002A3975 /* keys.plist */; };
+		813DB5291B72FA19002A3975 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DB5271B72FA19002A3975 /* SecondViewController.swift */; };
+		813DB52B1B72FC12002A3975 /* TTournamentListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DB52A1B72FC12002A3975 /* TTournamentListVC.swift */; };
+		813DB5311B730FE9002A3975 /* Tournament.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DB5301B730FE9002A3975 /* Tournament.swift */; };
+		813DB5331B73118C002A3975 /* TTournamentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DB5321B73118C002A3975 /* TTournamentCell.swift */; };
+		813DB5351B731CA2002A3975 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DB5341B731CA2002A3975 /* User.swift */; };
+		813DB5371B744115002A3975 /* TLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813DB5361B744115002A3975 /* TLoginVC.swift */; };
 		81499A291B70577100F502B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81499A281B70577100F502B9 /* AppDelegate.swift */; };
-		81499A2B1B70577100F502B9 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81499A2A1B70577100F502B9 /* FirstViewController.swift */; };
-		81499A2D1B70577100F502B9 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81499A2C1B70577100F502B9 /* SecondViewController.swift */; };
 		81499A301B70577100F502B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81499A2E1B70577100F502B9 /* Main.storyboard */; };
 		81499A321B70577200F502B9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81499A311B70577200F502B9 /* Images.xcassets */; };
 		81499A351B70577200F502B9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81499A331B70577200F502B9 /* LaunchScreen.xib */; };
 		81499A411B70577200F502B9 /* TournamentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81499A401B70577200F502B9 /* TournamentTests.swift */; };
+		814A1E5D1B7453B200DF9883 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 814A1E5B1B7453B200DF9883 /* Login.storyboard */; };
 		E0457D05E99E6532B68FB4BA /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E465CE74455D7C0399DFD13 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -34,16 +38,21 @@
 		813DB51D1B71BB23002A3975 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Supporting Files/Info.plist"; sourceTree = "<group>"; };
 		813DB51E1B71BB23002A3975 /* Tournament-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Tournament-Bridging-Header.h"; path = "Supporting Files/Tournament-Bridging-Header.h"; sourceTree = "<group>"; };
 		813DB5201B71C662002A3975 /* keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = keys.plist; path = "Supporting Files/keys.plist"; sourceTree = "<group>"; };
+		813DB5271B72FA19002A3975 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		813DB52A1B72FC12002A3975 /* TTournamentListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTournamentListVC.swift; sourceTree = "<group>"; };
+		813DB5301B730FE9002A3975 /* Tournament.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tournament.swift; sourceTree = "<group>"; };
+		813DB5321B73118C002A3975 /* TTournamentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTournamentCell.swift; sourceTree = "<group>"; };
+		813DB5341B731CA2002A3975 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		813DB5361B744115002A3975 /* TLoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLoginVC.swift; sourceTree = "<group>"; };
 		81499A231B70577100F502B9 /* Tournament.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tournament.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81499A281B70577100F502B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		81499A2A1B70577100F502B9 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		81499A2C1B70577100F502B9 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		81499A2F1B70577100F502B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		81499A311B70577200F502B9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		81499A341B70577200F502B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		81499A3A1B70577200F502B9 /* TournamentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TournamentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		81499A3F1B70577200F502B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81499A401B70577200F502B9 /* TournamentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentTests.swift; sourceTree = "<group>"; };
+		814A1E5C1B7453B200DF9883 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		82211556C5A40B02B49F53DA /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DF54D44867E29D9026EBA2FB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,6 +76,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		813DB5241B72FA0D002A3975 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				813DB5301B730FE9002A3975 /* Tournament.swift */,
+				813DB5341B731CA2002A3975 /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		813DB5251B72FA19002A3975 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				813DB5271B72FA19002A3975 /* SecondViewController.swift */,
+				813DB52A1B72FC12002A3975 /* TTournamentListVC.swift */,
+				813DB5361B744115002A3975 /* TLoginVC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		813DB52F1B7306F3002A3975 /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				813DB5321B73118C002A3975 /* TTournamentCell.swift */,
+			);
+			path = "Custom Cells";
+			sourceTree = "<group>";
+		};
 		81499A1A1B70577100F502B9 = {
 			isa = PBXGroup;
 			children = (
@@ -91,11 +127,12 @@
 			isa = PBXGroup;
 			children = (
 				81499A281B70577100F502B9 /* AppDelegate.swift */,
-				81499A2A1B70577100F502B9 /* FirstViewController.swift */,
-				81499A2C1B70577100F502B9 /* SecondViewController.swift */,
-				81499A2E1B70577100F502B9 /* Main.storyboard */,
-				81499A311B70577200F502B9 /* Images.xcassets */,
 				81499A331B70577200F502B9 /* LaunchScreen.xib */,
+				814A1E5E1B7453B800DF9883 /* Storyboards */,
+				813DB52F1B7306F3002A3975 /* Custom Cells */,
+				813DB5241B72FA0D002A3975 /* Model */,
+				813DB5251B72FA19002A3975 /* ViewControllers */,
+				81499A311B70577200F502B9 /* Images.xcassets */,
 				81499A261B70577100F502B9 /* Supporting Files */,
 			);
 			path = Tournament;
@@ -126,6 +163,15 @@
 				81499A3F1B70577200F502B9 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		814A1E5E1B7453B800DF9883 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				81499A2E1B70577100F502B9 /* Main.storyboard */,
+				814A1E5B1B7453B200DF9883 /* Login.storyboard */,
+			);
+			name = Storyboards;
 			sourceTree = "<group>";
 		};
 		8A045CB0406A5CEDB626BFBC /* Pods */ = {
@@ -231,7 +277,7 @@
 				813DB5211B71C662002A3975 /* keys.plist in Resources */,
 				81499A301B70577100F502B9 /* Main.storyboard in Resources */,
 				81499A351B70577200F502B9 /* LaunchScreen.xib in Resources */,
-				813DB51F1B71BB23002A3975 /* Info.plist in Resources */,
+				814A1E5D1B7453B200DF9883 /* Login.storyboard in Resources */,
 				81499A321B70577200F502B9 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,9 +344,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81499A2D1B70577100F502B9 /* SecondViewController.swift in Sources */,
+				813DB52B1B72FC12002A3975 /* TTournamentListVC.swift in Sources */,
+				813DB5291B72FA19002A3975 /* SecondViewController.swift in Sources */,
 				81499A291B70577100F502B9 /* AppDelegate.swift in Sources */,
-				81499A2B1B70577100F502B9 /* FirstViewController.swift in Sources */,
+				813DB5311B730FE9002A3975 /* Tournament.swift in Sources */,
+				813DB5331B73118C002A3975 /* TTournamentCell.swift in Sources */,
+				813DB5351B731CA2002A3975 /* User.swift in Sources */,
+				813DB5371B744115002A3975 /* TLoginVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,6 +387,14 @@
 				81499A341B70577200F502B9 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		814A1E5B1B7453B200DF9883 /* Login.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				814A1E5C1B7453B200DF9883 /* Base */,
+			);
+			name = Login.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

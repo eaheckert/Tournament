@@ -15,6 +15,8 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
     
     @IBOutlet weak var tableView: UITableView!
     
+    private var comingFromLogin: Bool = false
+    
     
     //MARK: View Controller Method
     
@@ -24,6 +26,20 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
         // Do any additional setup after loading the view, typically from a nib.
         
         self.getTournamentList()
+    }
+    
+    override func viewDidAppear(animated: Bool)
+    {
+        super.viewDidAppear(animated)
+        
+        //Check to see if LoginVC was displayed if so refreash data
+        if self.comingFromLogin
+        {
+            self.comingFromLogin = false
+            
+            self.getTournamentList()
+        }
+        
     }
     
     override func didReceiveMemoryWarning()
@@ -39,11 +55,16 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
     {
         //Check to see if the user has a username
         //If not load loginVC
-        if let userNameString = User.activeUser.username
+        var currentUser = User.currentUser()
+        
+        if currentUser != nil
         {
+            
             var query = PFQuery(className: "Tournament")
             
-            query.whereKey("createdBy", equalTo:User.activeUser.username!)
+            var username = currentUser?.username
+            
+            query.whereKey("createdBy", equalTo:username!)
             
             query.findObjectsInBackgroundWithBlock { (objects:[AnyObject]?, error:NSError?) -> Void in
                 if error == nil
@@ -59,6 +80,9 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
         else
         {
             println("No userName")
+            
+            //mark that the LoginVC is going to be displayed so that when we return the data gets refreshed.
+            self.comingFromLogin = true
             
             //If there is no user name we know there is no user.
             //So we present the login view controller.

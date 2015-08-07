@@ -41,7 +41,7 @@ class TLoginVC: UIViewController
         //First check to make sure that the user has entered information the meets the requirements
         if self.validateLoginInformation()
         {
-            [PFUser .logInWithUsernameInBackground(self.usernameTextField.text, password: self.passwordTextField.text, block: { (user, error) -> Void in
+            [PFUser .logInWithUsernameInBackground(self.usernameTextField.text, password: self.passwordTextField.text, block: { (user: PFUser?, error: NSError?) -> Void in
                 
                 if user != nil
                 {

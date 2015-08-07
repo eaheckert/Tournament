@@ -12,9 +12,6 @@ import Parse
 class User: PFUser, PFSubclassing
 {
     
-    static let activeUser = User()
-    
-//    let userName:String = PFUser.currentUser()!.username!
-    
+    @NSManaged var tournamentNames:NSMutableArray
     
 }

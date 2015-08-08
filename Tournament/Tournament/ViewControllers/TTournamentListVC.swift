@@ -17,6 +17,18 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
     
     private var comingFromLogin: Bool = false
     
+    private var pendingTournaments: NSMutableArray = NSMutableArray()
+    private var underwayTournaments: NSMutableArray = NSMutableArray()
+    private var awaitingTournaments: NSMutableArray = NSMutableArray()
+    private var completedTournaments: NSMutableArray = NSMutableArray()
+    
+    private var pendingSection: Int = -1
+    private var underwaySection: Int = -1
+    private var awaitingSection: Int = -1
+    private var completedSection: Int = -1
+    
+    private var selectedTournament: Tournament = Tournament()
+    
     
     //MARK: View Controller Method
     
@@ -69,6 +81,7 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
             query.findObjectsInBackgroundWithBlock { (objects:[AnyObject]?, error:NSError?) -> Void in
                 if error == nil
                 {
+                    
                     println("objects: ", objects)
                 }
                 else
@@ -100,10 +113,40 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
     
     //MARK: UITableView Delegate
     
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    {
+        var numberOfSection: Int = 0;
+        
+        if self.pendingTournaments.count > 0
+        {
+            self.pendingSection = numberOfSection
+            numberOfSection++
+        }
+        if self.underwayTournaments.count > 0
+        {
+            self.underwaySection = numberOfSection
+            numberOfSection++
+        }
+        if self.awaitingTournaments.count > 0
+        {
+            self.awaitingSection = numberOfSection
+            numberOfSection++
+        }
+        if self.completedTournaments.count > 0
+        {
+            self.completedSection = numberOfSection
+            numberOfSection++
+        }
+        
+        return numberOfSection;
+        
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return 0
     }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("TTournamentCell") as! TTournamentCell

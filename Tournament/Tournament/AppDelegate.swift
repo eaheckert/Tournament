@@ -81,6 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     func loadSubclasses()
     {
         User.registerSubclass()
+        Tournament.registerSubclass()
     }
 
 }

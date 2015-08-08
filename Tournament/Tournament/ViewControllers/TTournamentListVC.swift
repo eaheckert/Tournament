@@ -11,11 +11,12 @@ import Parse
 
 class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
-    //MARK: Varibles
+    //MARK: Variables
     
     @IBOutlet weak var tableView: UITableView!
     
     private var comingFromLogin: Bool = false
+    private var firstTime: Bool = true
     
     private var pendingTournaments: NSMutableArray = NSMutableArray()
     private var underwayTournaments: NSMutableArray = NSMutableArray()
@@ -36,8 +37,6 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
     {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        self.getTournamentList()
     }
     
     override func viewDidAppear(animated: Bool)
@@ -45,7 +44,7 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
         super.viewDidAppear(animated)
         
         //Check to see if LoginVC was displayed if so refreash data
-        if self.comingFromLogin
+        if self.comingFromLogin || firstTime
         {
             self.comingFromLogin = false
             
@@ -61,7 +60,7 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     
-    //MARK: Custom Functions
+    //MARK: Custom Methods
     
     func getTournamentList()
     {
@@ -94,9 +93,6 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
         {
             println("No userName")
             
-            //mark that the LoginVC is going to be displayed so that when we return the data gets refreshed.
-            self.comingFromLogin = true
-            
             //If there is no user name we know there is no user.
             //So we present the login view controller.
             //It is presented as a Model since the user can't use the app without
@@ -105,7 +101,12 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
             
             let loginVC = storyboard.instantiateViewControllerWithIdentifier("TLoginVC") as! TLoginVC
             
-            self.navigationController?.presentViewController(loginVC, animated: true, completion: nil)
+            self.navigationController?.presentViewController(loginVC, animated: true, completion:  { () -> Void in
+                
+                //mark that the LoginVC is going to be displayed so that when we return the data gets refreshed.
+                self.comingFromLogin = true
+                
+            })
         }
         
     }

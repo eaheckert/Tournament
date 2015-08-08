@@ -36,7 +36,7 @@ class Tournament: PFObject, PFSubclassing
         
     }
     
-    //MARK: Parse Class Varibles
+    //MARK: Parse Class Variables
     
     @NSManaged var createdBy:String
     @NSManaged var name:String
@@ -50,12 +50,26 @@ class Tournament: PFObject, PFSubclassing
     @NSManaged var tournamentMatchesDictAr:Array<Dictionary<String,AnyObject>>
     @NSManaged var tournamentParticipantsDictAr:Array<Dictionary<String,AnyObject>>
     
-    //MARK: Model Only Varibles
+    //MARK: Model Only Variables
     
     var tournamentMatches:Array<Match> = []
     var tournamentParticipants:Array<Participant> = []
     
     //MARK: Class Methods
+    
+    //If you override a Parse class it will need this method to be register the class with Parse
+    override class func initialize()
+    {
+        struct Static
+        {
+            static var onceToken : dispatch_once_t = 0;
+        }
+        
+        dispatch_once(&Static.onceToken)
+        {
+            self.registerSubclass()
+        }
+    }
     
     class func parseClassName() -> String
     {

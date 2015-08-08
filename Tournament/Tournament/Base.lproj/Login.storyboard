@@ -146,10 +146,10 @@
             </objects>
             <point key="canvasLocation" x="356" y="346"/>
         </scene>
-        <!--View Controller-->
+        <!--Register UserVC-->
         <scene sceneID="v38-Po-UmR">
             <objects>
-                <viewController id="jKm-sY-vcP" sceneMemberID="viewController">
+                <viewController id="jKm-sY-vcP" customClass="TRegisterUserVC" customModule="Tournament" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mHH-2j-7IL"/>
                         <viewControllerLayoutGuide type="bottom" id="Bor-Sy-c1W"/>
@@ -271,7 +271,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Kt-qu-mDs">
-                                                <rect key="frame" x="230" y="393" width="172" height="58"/>
+                                                <rect key="frame" x="214" y="393" width="172" height="58"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="58" id="hOm-Zc-uc5"/>
                                                     <constraint firstAttribute="width" constant="172" id="hhT-Fg-JIt"/>
@@ -280,9 +280,12 @@
                                                     <color key="titleColor" red="1" green="0.74901960779999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="onRegisterAccountAction:" destination="jKm-sY-vcP" eventType="touchUpInside" id="GYc-GW-pJ6"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uSm-qs-FSI">
-                                                <rect key="frame" x="230" y="459" width="172" height="58"/>
+                                                <rect key="frame" x="214" y="459" width="172" height="58"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="172" id="TGf-pi-uZv"/>
                                                     <constraint firstAttribute="height" constant="58" id="ecF-vh-p0y"/>
@@ -291,6 +294,9 @@
                                                     <color key="titleColor" red="1" green="0.74901960779999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="onCancelAction:" destination="jKm-sY-vcP" eventType="touchUpInside" id="530-pH-jDv"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.1019607843" green="0.090196078430000007" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -305,7 +311,7 @@
                                             <constraint firstItem="YTV-dJ-Dh8" firstAttribute="top" secondItem="jXd-R2-sLO" secondAttribute="bottom" constant="21" id="Fs2-nO-T37"/>
                                             <constraint firstAttribute="trailing" secondItem="YTV-dJ-Dh8" secondAttribute="trailing" constant="8" id="Gud-1w-gL7"/>
                                             <constraint firstItem="JUV-YA-bge" firstAttribute="top" secondItem="YTV-dJ-Dh8" secondAttribute="bottom" constant="21" id="LzB-Vt-dQf"/>
-                                            <constraint firstAttribute="centerX" secondItem="0Kt-qu-mDs" secondAttribute="centerX" constant="-16" id="NKT-Pk-grd"/>
+                                            <constraint firstAttribute="centerX" secondItem="0Kt-qu-mDs" secondAttribute="centerX" id="NKT-Pk-grd"/>
                                             <constraint firstItem="WMI-Ea-gFc" firstAttribute="top" secondItem="Svo-BZ-R0d" secondAttribute="top" constant="40" id="PTa-jx-gSi"/>
                                             <constraint firstItem="0Kt-qu-mDs" firstAttribute="top" secondItem="JUV-YA-bge" secondAttribute="bottom" constant="30" id="R09-IT-CQU"/>
                                             <constraint firstAttribute="trailing" secondItem="WMI-Ea-gFc" secondAttribute="trailing" constant="8" id="Z4a-kr-Dav"/>
@@ -313,7 +319,7 @@
                                             <constraint firstItem="TQf-M5-I0v" firstAttribute="top" secondItem="JUV-YA-bge" secondAttribute="bottom" constant="2" id="lFJ-dH-ggH"/>
                                             <constraint firstAttribute="trailing" secondItem="jXd-R2-sLO" secondAttribute="trailing" constant="8" id="tj2-Hg-YRm"/>
                                             <constraint firstItem="JUV-YA-bge" firstAttribute="leading" secondItem="Svo-BZ-R0d" secondAttribute="leading" constant="8" id="umU-HI-4KC"/>
-                                            <constraint firstAttribute="centerX" secondItem="uSm-qs-FSI" secondAttribute="centerX" constant="-16" id="z1z-TO-Xoo"/>
+                                            <constraint firstAttribute="centerX" secondItem="uSm-qs-FSI" secondAttribute="centerX" id="z1z-TO-Xoo"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -335,6 +341,12 @@
                             <constraint firstAttribute="bottom" secondItem="fWm-0R-eEa" secondAttribute="bottom" id="x9B-XZ-uJQ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="confirmPasswordTextField" destination="9Is-KZ-hkF" id="luh-jF-jwS"/>
+                        <outlet property="emailTextField" destination="I2x-H8-sUx" id="WBU-qe-r5a"/>
+                        <outlet property="passwordTextField" destination="rD4-Pk-sKJ" id="rcf-o3-tun"/>
+                        <outlet property="usernameTextField" destination="r2h-Jj-qyZ" id="g6r-xt-drc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mWl-R2-7bp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

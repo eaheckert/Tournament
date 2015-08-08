@@ -11,10 +11,13 @@ import Parse
 
 class TLoginVC: UIViewController
 {
-    //MARK: Varibles
+    
+    
+    //MARK: Variables
     
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    
     
     //MARK: View Controller Methods
     
@@ -22,6 +25,21 @@ class TLoginVC: UIViewController
     {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewWillAppear(animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        
+        
+        //We do this check so that if we come back from registering user with a new active user they don't need to sign-in.
+        //This is because the registering process signs the user in at the same time.
+        var currentUser = User.currentUser()
+        
+        if currentUser != nil
+        {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
     
     override func didReceiveMemoryWarning()
@@ -34,7 +52,8 @@ class TLoginVC: UIViewController
         return UIStatusBarStyle.LightContent
     }
     
-    //MARK: Button Methods
+    
+    //MARK: IBAction Methods
     
     @IBAction func onLoginAction(sender: AnyObject)
     {
@@ -67,6 +86,7 @@ class TLoginVC: UIViewController
             self.presentViewController(alert, animated: true, completion: nil)
         }
     }
+    
     
     //MARK: Custom Methods
     

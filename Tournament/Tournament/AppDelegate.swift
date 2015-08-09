@@ -44,7 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate
             print("ERROR: There is currently no keys.plist.")
         }
         
-        
         return true
     }
 

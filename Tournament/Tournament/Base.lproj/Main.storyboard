@@ -17,14 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="65" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="YHJ-Za-x4a">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="84" sectionHeaderHeight="31" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="YHJ-Za-x4a">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                                 <color key="backgroundColor" red="0.1019607843" green="0.090196078430000007" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TTournamentCell" rowHeight="84" id="IaO-yZ-jHK" customClass="TTournamentCell">
+                                    <tableViewCell autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TTournamentCell" rowHeight="84" id="IaO-yZ-jHK" customClass="TTournamentCell" customModule="Tournament">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IaO-yZ-jHK" id="rab-TS-tEq">
+                                        <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IaO-yZ-jHK" id="rab-TS-tEq">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tournament Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYg-nP-nu7" userLabel="Label - Tournament name">
@@ -68,6 +68,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.1019607843" green="0.090196078430000007" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="gameNameLabel" destination="FeP-6W-SCE" id="H3O-wn-BRz"/>
+                                            <outlet property="titleLabel" destination="AYg-nP-nu7" id="zsN-Nh-WOL"/>
+                                            <outlet property="typeLabel" destination="Eiu-yM-CXr" id="PYG-X1-TBS"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="sectionHeaderCell" rowHeight="31" id="4di-3h-Q5q">
                                         <rect key="frame" x="0.0" y="237" width="320" height="31"/>
@@ -105,8 +110,8 @@
                         <color key="backgroundColor" red="0.1019607843" green="0.090196078430000007" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="YHJ-Za-x4a" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="JLd-dS-1v4"/>
-                            <constraint firstItem="YHJ-Za-x4a" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="WRY-Pe-QjX"/>
                             <constraint firstAttribute="trailing" secondItem="YHJ-Za-x4a" secondAttribute="trailing" id="b21-yE-Ni7"/>
+                            <constraint firstItem="YHJ-Za-x4a" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="ebN-0t-IAm"/>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="YHJ-Za-x4a" secondAttribute="bottom" id="fRx-yY-nhK"/>
                         </constraints>
                     </view>

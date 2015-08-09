@@ -47,6 +47,7 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
         if self.comingFromLogin || firstTime
         {
             self.comingFromLogin = false
+            self.firstTime = false
             
             self.getTournamentList()
         }
@@ -70,6 +71,10 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
         
         if currentUser != nil
         {
+            self.pendingTournaments.removeAllObjects()
+            self.underwayTournaments.removeAllObjects()
+            self.awaitingTournaments.removeAllObjects()
+            self.completedTournaments.removeAllObjects()
             
             var query = PFQuery(className: "Tournament")
             
@@ -78,10 +83,48 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
             query.whereKey("createdBy", equalTo:username!)
             
             query.findObjectsInBackgroundWithBlock { (objects:[AnyObject]?, error:NSError?) -> Void in
+                
                 if error == nil
                 {
-                    
                     println("objects: ", objects)
+                    
+                    for var i = 0; i < objects?.count; i++
+                    {
+                        if let tempTour = objects?[i] as? Tournament
+                        {
+                            var state = tempTour.getTournamentState()
+                            
+                            //Fill the different section array based off the tournament's section
+                            if state == Tournament.tournamentState.TOURNAMENT_PENDING
+                            {
+                                self.pendingTournaments.addObject(tempTour)
+                            }
+                            else
+                            if state == Tournament.tournamentState.TOURNAMENT_UNDERWAY
+                            {
+                                self.underwayTournaments.addObject(tempTour)
+                            }
+                            else
+                            if state == Tournament.tournamentState.TOURNAMENT_AWAITING_REVIEW
+                            {
+                                self.awaitingTournaments.addObject(tempTour)
+                            }
+                            else
+                            if state == Tournament.tournamentState.TOURNAMENT_COMPLETE
+                            {
+                                self.completedTournaments.addObject(tempTour)
+                            }
+                        }
+                    }
+                    
+                    //before we reload the tableview we want to reset the section values so that they can be filled as needed while reloading the tableview.
+                    //This is to prevent to sections ending up with same number if one section goes from having tournaments to not having any.
+                    self.pendingSection = -1
+                    self.underwaySection = -1
+                    self.awaitingSection = -1
+                    self.completedSection = -1
+                    
+                    self.tableView.reloadData()
                 }
                 else
                 {
@@ -118,6 +161,7 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
     {
         var numberOfSection: Int = 0;
         
+        //Since we don't know which sections will have tournaments we load section numbers based off if that section has any tournaments.
         if self.pendingTournaments.count > 0
         {
             self.pendingSection = numberOfSection
@@ -145,12 +189,126 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return 0
+        var rowCount: Int = 0
+        
+        if section == self.pendingSection
+        {
+            rowCount = self.pendingTournaments.count
+        }
+        else
+        if section == self.underwaySection
+        {
+            rowCount = self.underwayTournaments.count
+        }
+        else
+        if section == self.awaitingSection
+        {
+            rowCount = self.awaitingTournaments.count
+        }
+        else
+        if section == self.completedSection
+        {
+            rowCount = self.completedTournaments.count
+        }
+        
+        return rowCount
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
+    {
+        return 31.0
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
+    {
+        
+        let header = tableView.dequeueReusableCellWithIdentifier("sectionHeaderCell") as! UIView
+        let titleLabel = header.viewWithTag(1) as! UILabel
+        
+        
+        if section == self.pendingSection
+        {
+            titleLabel.text = String(format: "Pending %i", self.pendingTournaments.count)
+        }
+        else
+        if section == self.underwaySection
+        {
+            titleLabel.text = String(format: "Underway %i", self.underwayTournaments.count)
+        }
+        else
+        if section == self.awaitingSection
+        {
+            titleLabel.text = String(format: "Awaiting %i", self.awaitingTournaments.count)
+        }
+        else
+        if section == self.completedSection
+        {
+            titleLabel.text = String(format: "Completed %i", self.completedTournaments.count)
+        }
+        
+        return header
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    {
+        return 84.0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
+        var tempTour: Tournament = Tournament()
+        
+        if indexPath.section == self.pendingSection
+        {
+            if indexPath.row > self.pendingTournaments.count
+            {
+                return UITableViewCell()
+            }
+            else
+            {
+                tempTour = self.pendingTournaments[indexPath.row] as! Tournament
+            }
+        }
+        else
+        if indexPath.section == self.underwaySection
+        {
+            if indexPath.row > self.underwayTournaments.count
+            {
+                return UITableViewCell()
+            }
+            else
+            {
+                tempTour = self.underwayTournaments[indexPath.row] as! Tournament
+            }
+        }
+        else
+        if indexPath.section == self.awaitingSection
+        {
+            if indexPath.row > self.awaitingTournaments.count
+            {
+                return UITableViewCell()
+            }
+            else
+            {
+                tempTour = self.awaitingTournaments[indexPath.row] as! Tournament
+            }
+        }
+        else
+        if indexPath.section == self.completedSection
+        {
+            if indexPath.row > self.completedTournaments.count
+            {
+                return UITableViewCell()
+            }
+            else
+            {
+                tempTour = self.completedTournaments[indexPath.row] as! Tournament
+            }
+        }
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("TTournamentCell") as! TTournamentCell
+        
+        cell.loadTournament(tempTour)
 
         return cell
     }

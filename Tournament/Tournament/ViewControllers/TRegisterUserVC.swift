@@ -122,6 +122,7 @@ class  TRegisterUserVC: UIViewController
             }
         }
         
+        //make sure the that the password is long enough
         if count(self.passwordTextField.text) < 6
         {
             var alert = UIAlertController(title: "Error", message: "Password is not long enough. Please enter a long password.", preferredStyle: UIAlertControllerStyle.Alert)
@@ -133,6 +134,7 @@ class  TRegisterUserVC: UIViewController
             return false
         }
         
+        //make sure that the password and the password confirm both match
         if self.passwordTextField.text != self.confirmPasswordTextField.text
         {
             var alert = UIAlertController(title: "Error", message: "Passwords don't match. Please make sure both passwords match.", preferredStyle: UIAlertControllerStyle.Alert)

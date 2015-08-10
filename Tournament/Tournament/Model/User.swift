@@ -12,7 +12,7 @@ import Parse
 class User: PFUser, PFSubclassing
 {
     
-    @NSManaged var tournamentNames:NSMutableArray
+    @NSManaged var tournamentNames: [String]
     
     //If you override a Parse class it will need this method to be register the class with Parse
     override class func initialize()
@@ -24,7 +24,7 @@ class User: PFUser, PFSubclassing
         
         dispatch_once(&Static.onceToken)
         {
-                self.registerSubclass()
+            self.registerSubclass()
         }
     }
     

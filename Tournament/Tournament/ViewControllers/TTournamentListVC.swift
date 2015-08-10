@@ -15,7 +15,7 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
     
     @IBOutlet weak var tableView: UITableView!
     
-    private var comingFromLogin: Bool = false
+    private var shouldRefreshOnReturn: Bool = false
     private var firstTime: Bool = true
     
     private var pendingTournaments: NSMutableArray = NSMutableArray()
@@ -39,14 +39,24 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    override func viewWillAppear(animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        
+        var plusImage = UIImage(named: "white_plus")?.imageWithRenderingMode(.AlwaysOriginal)
+        var barButton = UIBarButtonItem(image: plusImage, style: UIBarButtonItemStyle.Plain, target: self, action: "onCreateTournamentAction")
+        self.parentViewController?.navigationItem.rightBarButtonItem = barButton
+        
+    }
+    
     override func viewDidAppear(animated: Bool)
     {
         super.viewDidAppear(animated)
         
         //Check to see if LoginVC was displayed if so refreash data
-        if self.comingFromLogin || firstTime
+        if self.shouldRefreshOnReturn || firstTime
         {
-            self.comingFromLogin = false
+            self.shouldRefreshOnReturn = false
             self.firstTime = false
             
             self.getTournamentList()
@@ -147,11 +157,22 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
             self.navigationController?.presentViewController(loginVC, animated: true, completion:  { () -> Void in
                 
                 //mark that the LoginVC is going to be displayed so that when we return the data gets refreshed.
-                self.comingFromLogin = true
+                self.shouldRefreshOnReturn = true
                 
             })
         }
         
+    }
+    
+    func onCreateTournamentAction()
+    {
+        
+        let createVC = self.storyboard!.instantiateViewControllerWithIdentifier("TCreateTournamentVC") as! TCreateTournamentVC
+        
+        //Since we might be adding a new tournament we need to refresh the list when the user returns to this view.
+        self.shouldRefreshOnReturn = true
+        
+        self.navigationController?.pushViewController(createVC, animated: true)
     }
     
     

@@ -26,6 +26,7 @@
 		814A1E6A1B77261100DF9883 /* TCreateTournamentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814A1E691B77261100DF9883 /* TCreateTournamentVC.swift */; };
 		814A1E6C1B77E40400DF9883 /* TParticipantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814A1E6B1B77E40400DF9883 /* TParticipantView.swift */; };
 		814A1E6F1B77E45100DF9883 /* TParticipantView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 814A1E6E1B77E45100DF9883 /* TParticipantView.xib */; };
+		81CD75D31B7AF78D00BD6D77 /* TBracketVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CD75D21B7AF78D00BD6D77 /* TBracketVC.swift */; };
 		E0457D05E99E6532B68FB4BA /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E465CE74455D7C0399DFD13 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,7 @@
 		814A1E691B77261100DF9883 /* TCreateTournamentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCreateTournamentVC.swift; sourceTree = "<group>"; };
 		814A1E6B1B77E40400DF9883 /* TParticipantView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TParticipantView.swift; path = Views/TParticipantView.swift; sourceTree = "<group>"; };
 		814A1E6E1B77E45100DF9883 /* TParticipantView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TParticipantView.xib; path = Views/nibs/TParticipantView.xib; sourceTree = "<group>"; };
+		81CD75D21B7AF78D00BD6D77 /* TBracketVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBracketVC.swift; sourceTree = "<group>"; };
 		82211556C5A40B02B49F53DA /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DF54D44867E29D9026EBA2FB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +109,7 @@
 				813DB5361B744115002A3975 /* TLoginVC.swift */,
 				814A1E631B75A1A200DF9883 /* TRegisterUserVC.swift */,
 				814A1E691B77261100DF9883 /* TCreateTournamentVC.swift */,
+				81CD75D21B7AF78D00BD6D77 /* TBracketVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 				81499A291B70577100F502B9 /* AppDelegate.swift in Sources */,
 				814A1E601B75A02200DF9883 /* Match.swift in Sources */,
 				814A1E6C1B77E40400DF9883 /* TParticipantView.swift in Sources */,
+				81CD75D31B7AF78D00BD6D77 /* TBracketVC.swift in Sources */,
 				813DB5311B730FE9002A3975 /* Tournament.swift in Sources */,
 				813DB5331B73118C002A3975 /* TTournamentCell.swift in Sources */,
 				813DB5351B731CA2002A3975 /* User.swift in Sources */,

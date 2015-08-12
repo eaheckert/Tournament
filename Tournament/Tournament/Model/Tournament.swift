@@ -14,17 +14,7 @@ import Parse
 class Tournament: PFObject, PFSubclassing
 {
     
-    //MARK: Tournament enums
-    
-    enum tournamentType
-    {
-        case DOUBLE_ELIMINATION
-        case SINGLE_ELIMINATION
-        case ROUND_ROBIN
-        case SWISS
-        case UNKNOWN_TOURNAMENT_TYPE
-        
-    }
+    //MARK: Tournament enum
     
     enum tournamentState
     {
@@ -76,33 +66,6 @@ class Tournament: PFObject, PFSubclassing
         return "Tournament"
     }
     
-    class func getTournamentTypeFromString(type:String!) -> tournamentType
-    {
-        if type.uppercaseString == "single elimination".uppercaseString
-        {
-            return tournamentType.SINGLE_ELIMINATION
-        }
-        else
-        if type.uppercaseString == "double elimination".uppercaseString
-        {
-            return tournamentType.DOUBLE_ELIMINATION
-        }
-        else
-        if type.uppercaseString == "swiss".uppercaseString
-        {
-            return tournamentType.SWISS
-        }
-        else
-        if type.uppercaseString == "round robin".uppercaseString
-        {
-            return tournamentType.ROUND_ROBIN
-        }
-        else
-        {
-            return tournamentType.UNKNOWN_TOURNAMENT_TYPE
-        }
-    }
-    
     class func getTournamentStateFromString(state:String!) -> tournamentState
     {
         if state.uppercaseString == "complete".uppercaseString
@@ -131,11 +94,6 @@ class Tournament: PFObject, PFSubclassing
     }
     
     //MARK: Methods
-    
-    func getTournamentType() -> tournamentType
-    {
-        return Tournament.getTournamentTypeFromString(self.tournamentType)
-    }
     
     func getTournamentState() -> tournamentState
     {

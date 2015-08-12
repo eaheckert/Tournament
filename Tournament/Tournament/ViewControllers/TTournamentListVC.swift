@@ -404,13 +404,14 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
         
         self.selectedTournament = tempTour
         
-        println(tempTour.tournamentParticipantsDictAr)
-        
         if !Bool(self.selectedTournament.tournamentParticipants.count)
         {
             self.selectedTournament.tournamentParticipants = Participant.parseParticipantFromJson(self.selectedTournament.tournamentParticipantsDictAr)
-            
-            println(selectedTournament.tournamentParticipants)
+        }
+        
+        if !Bool(self.selectedTournament.tournamentMatches.count)
+        {
+            self.selectedTournament.tournamentMatches = Match.parseParticipantFromJson(self.selectedTournament.tournamentMatchesDictAr)
         }
         
     }

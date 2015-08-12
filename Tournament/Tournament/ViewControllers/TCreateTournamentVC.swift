@@ -21,7 +21,6 @@ class TCreateTournamentVC : UIViewController
     
     @IBOutlet weak var tournamentNameTextField: UITextField!
     @IBOutlet weak var gameNameTextField: UITextField!
-    @IBOutlet weak var tournamentTypeLabel: UILabel!
     @IBOutlet weak var participantListView: UIView!
     @IBOutlet weak var participantListViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var participantNameEntryTextField: UITextField!
@@ -75,8 +74,6 @@ class TCreateTournamentVC : UIViewController
         }while needsTitle
         
         self.tournamentName = possibleName
-        
-        self.tournamentTypeLabel.text = String(format: "Current Tourname Type: %@", self.tournamentType)
         
         
     }
@@ -142,7 +139,7 @@ class TCreateTournamentVC : UIViewController
             self.createSingleEliminationMatches()
         }
         
-        if self.matchList.count > 1
+        if self.matchList.count < 1
         {
             var alert = UIAlertController(title: "Error", message: "Was unable to create any matches.", preferredStyle: UIAlertControllerStyle.Alert)
             

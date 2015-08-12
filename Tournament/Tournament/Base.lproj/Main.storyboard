@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <view autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xE3-k6-Xiw">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="515"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="486"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B5I-4T-GiI" userLabel="View - tournament name">
                                                 <rect key="frame" x="8" y="20" width="584" height="65"/>
@@ -73,21 +73,15 @@
                                                     <constraint firstAttribute="height" constant="65" id="y06-rr-PvF"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wc3-4a-gjv">
-                                                <rect key="frame" x="15" y="166" width="42" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <view autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7En-zk-gPl" userLabel="View - participant list view">
-                                                <rect key="frame" x="8" y="195" width="584" height="0.0"/>
+                                                <rect key="frame" x="8" y="166" width="584" height="0.0"/>
                                                 <color key="backgroundColor" red="1" green="0.74901960779999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" id="UJ4-86-xEl"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rae-l8-K0j" userLabel="View - participant entry">
-                                                <rect key="frame" x="8" y="203" width="584" height="65"/>
+                                                <rect key="frame" x="8" y="174" width="584" height="65"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Login_TextFieldBox" translatesAutoresizingMaskIntoConstraints="NO" id="12t-3k-H4T">
                                                         <rect key="frame" x="0.0" y="0.0" width="584" height="65"/>
@@ -112,7 +106,7 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yWn-x1-vBz">
-                                                <rect key="frame" x="193" y="276" width="214" height="88"/>
+                                                <rect key="frame" x="193" y="247" width="214" height="88"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="88" id="dpF-lL-Oma"/>
@@ -125,22 +119,8 @@
                                                     <action selector="onAddParticipantAction:" destination="ruD-60-XeM" eventType="touchUpInside" id="FA2-Jc-ANf"/>
                                                 </connections>
                                             </button>
-                                            <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQh-g4-lER">
-                                                <rect key="frame" x="193" y="364" width="214" height="0.0"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="214" id="PBe-Y5-jfa"/>
-                                                    <constraint firstAttribute="height" id="UTX-BU-arz"/>
-                                                </constraints>
-                                                <state key="normal" title="Select Tournament">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="onSelectTournamentTypeAction:" destination="ruD-60-XeM" eventType="touchUpInside" id="JCR-Eq-05B"/>
-                                                </connections>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0T1-XO-Ib5">
-                                                <rect key="frame" x="193" y="384" width="214" height="88"/>
+                                                <rect key="frame" x="193" y="355" width="214" height="88"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="88" id="2Cy-qe-KDy"/>
@@ -160,19 +140,15 @@
                                             <constraint firstAttribute="trailing" secondItem="7En-zk-gPl" secondAttribute="trailing" constant="8" id="1eN-vI-sK0"/>
                                             <constraint firstItem="7En-zk-gPl" firstAttribute="leading" secondItem="xE3-k6-Xiw" secondAttribute="leading" constant="8" id="1eg-n0-fqn"/>
                                             <constraint firstItem="B5I-4T-GiI" firstAttribute="top" secondItem="xE3-k6-Xiw" secondAttribute="top" constant="20" id="20g-BC-MU2"/>
-                                            <constraint firstItem="nQh-g4-lER" firstAttribute="top" secondItem="yWn-x1-vBz" secondAttribute="bottom" id="6fZ-dX-Bdg"/>
                                             <constraint firstItem="B5I-4T-GiI" firstAttribute="leading" secondItem="xE3-k6-Xiw" secondAttribute="leading" constant="8" id="97d-j1-gFY"/>
                                             <constraint firstAttribute="trailing" secondItem="rjm-Xv-R6F" secondAttribute="trailing" constant="8" id="J6K-Dn-0fh"/>
-                                            <constraint firstItem="wc3-4a-gjv" firstAttribute="top" secondItem="rjm-Xv-R6F" secondAttribute="bottom" constant="8" id="QUc-Do-I2P"/>
-                                            <constraint firstItem="7En-zk-gPl" firstAttribute="top" secondItem="wc3-4a-gjv" secondAttribute="bottom" constant="8" id="TMz-GF-uvh"/>
                                             <constraint firstAttribute="centerX" secondItem="yWn-x1-vBz" secondAttribute="centerX" id="UjY-RO-Dc1"/>
                                             <constraint firstItem="Rae-l8-K0j" firstAttribute="leading" secondItem="xE3-k6-Xiw" secondAttribute="leading" constant="8" id="a7M-YX-Vai"/>
+                                            <constraint firstItem="0T1-XO-Ib5" firstAttribute="top" secondItem="yWn-x1-vBz" secondAttribute="bottom" constant="20" id="bIR-NM-eGK"/>
                                             <constraint firstAttribute="trailing" secondItem="B5I-4T-GiI" secondAttribute="trailing" constant="8" id="dA7-sK-aSJ"/>
                                             <constraint firstItem="yWn-x1-vBz" firstAttribute="top" secondItem="Rae-l8-K0j" secondAttribute="bottom" constant="8" id="eaw-HW-eQf"/>
-                                            <constraint firstItem="wc3-4a-gjv" firstAttribute="leading" secondItem="xE3-k6-Xiw" secondAttribute="leading" constant="15" id="gAj-fp-CSd"/>
                                             <constraint firstAttribute="bottom" secondItem="0T1-XO-Ib5" secondAttribute="bottom" constant="43" id="hWe-tO-4AR"/>
-                                            <constraint firstItem="nQh-g4-lER" firstAttribute="centerX" secondItem="yWn-x1-vBz" secondAttribute="centerX" id="kgl-kD-lY8"/>
-                                            <constraint firstItem="0T1-XO-Ib5" firstAttribute="top" secondItem="nQh-g4-lER" secondAttribute="bottom" constant="20" id="lL6-nB-pTa"/>
+                                            <constraint firstItem="7En-zk-gPl" firstAttribute="top" secondItem="rjm-Xv-R6F" secondAttribute="bottom" constant="8" id="nr5-NY-RTc"/>
                                             <constraint firstAttribute="trailing" secondItem="Rae-l8-K0j" secondAttribute="trailing" constant="8" id="oDr-vm-Xkw"/>
                                             <constraint firstItem="Rae-l8-K0j" firstAttribute="top" secondItem="7En-zk-gPl" secondAttribute="bottom" constant="8" id="oPE-l5-3gS"/>
                                             <constraint firstItem="rjm-Xv-R6F" firstAttribute="leading" secondItem="xE3-k6-Xiw" secondAttribute="leading" constant="8" id="rlK-bQ-30y"/>
@@ -209,7 +185,6 @@
                         <outlet property="scrollView" destination="rKY-GO-YRI" id="hSb-lu-br3"/>
                         <outlet property="scrollViewBottomConstraint" destination="On7-Ht-IYC" id="d4D-th-FCv"/>
                         <outlet property="tournamentNameTextField" destination="qkX-eq-eyC" id="qz6-yO-t6p"/>
-                        <outlet property="tournamentTypeLabel" destination="wc3-4a-gjv" id="bp4-wm-yGq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6jy-G5-dsQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -331,11 +306,30 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="tableView" destination="YHJ-Za-x4a" id="zFZ-iR-2uI"/>
+                        <segue destination="b6K-ZD-xSb" kind="show" identifier="To Single Elimination Bracket Segue" id="x4t-1R-gfl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="750" y="-320"/>
+        </scene>
+        <!--BracketVC-->
+        <scene sceneID="E0v-vS-7RA">
+            <objects>
+                <viewController id="b6K-ZD-xSb" customClass="TBracketVC" customModule="Tournament" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="g2n-8u-BxK"/>
+                        <viewControllerLayoutGuide type="bottom" id="LNg-8y-XIa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4ir-6J-KWE">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ldU-v2-q3I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1388" y="-320"/>
         </scene>
         <!--Profile-->
         <scene sceneID="wg7-f3-ORb">

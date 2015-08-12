@@ -5,3 +5,5 @@
 #import <Parse/Parse.h>
 #import <ParseUI/ParseUI.h>
 #import <Bolts/Bolts.h>
+#import <Mantle/MTLJSONAdapter.h>
+#import <Mantle/Mantle.h>

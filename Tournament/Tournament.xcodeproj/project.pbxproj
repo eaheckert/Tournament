@@ -91,8 +91,8 @@
 		813DB5241B72FA0D002A3975 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				813DB5301B730FE9002A3975 /* Tournament.swift */,
 				813DB5341B731CA2002A3975 /* User.swift */,
+				813DB5301B730FE9002A3975 /* Tournament.swift */,
 				814A1E5F1B75A02200DF9883 /* Match.swift */,
 				814A1E611B75A03000DF9883 /* Participant.swift */,
 			);

@@ -47,8 +47,8 @@ class Tournament: PFObject, PFSubclassing
     @NSManaged var gameName:String
     @NSManaged var participantsCount:Int
     @NSManaged var maxNumberRounds:Int
-    @NSManaged var tournamentMatchesDictAr:Array<Dictionary<String,AnyObject>>
-    @NSManaged var tournamentParticipantsDictAr:Array<Dictionary<String,AnyObject>>
+    @NSManaged var tournamentMatchesDictAr:Array<AnyObject>
+    @NSManaged var tournamentParticipantsDictAr:Array<AnyObject>
     
     //MARK: Model Only Variables
     
@@ -71,7 +71,7 @@ class Tournament: PFObject, PFSubclassing
         }
     }
     
-    class func parseClassName() -> String
+    static func parseClassName() -> String
     {
         return "Tournament"
     }
@@ -144,11 +144,16 @@ class Tournament: PFObject, PFSubclassing
     
     func convertMatches()
     {
+//        let matchAr = Match.parseMatchFromJson(self.tournamentMatchesDictAr)
+        
         self.tournamentMatches = []
     }
     
     func convertParticipants()
     {
+        print(tournamentParticipantsDictAr)
+//        var partAr: Array<Participant> = Participant.parseParticipantFromJson(self.tournamentParticipantsDictAr)
+        
         self.tournamentParticipants = []
     }
     

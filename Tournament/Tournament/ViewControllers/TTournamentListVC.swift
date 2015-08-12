@@ -16,6 +16,7 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
     @IBOutlet weak var tableView: UITableView!
     
     private var shouldRefreshOnReturn: Bool = false
+    private var respondingToTouch: Bool = false
     private var firstTime: Bool = true
     
     private var pendingTournaments: NSMutableArray = NSMutableArray()
@@ -62,6 +63,12 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
             self.getTournamentList()
         }
         
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        respondingToTouch = false
     }
     
     override func didReceiveMemoryWarning()
@@ -281,7 +288,7 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
         
         if indexPath.section == self.pendingSection
         {
-            if indexPath.row > self.pendingTournaments.count
+            if indexPath.row >= self.pendingTournaments.count
             {
                 return UITableViewCell()
             }
@@ -293,7 +300,7 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
         else
         if indexPath.section == self.underwaySection
         {
-            if indexPath.row > self.underwayTournaments.count
+            if indexPath.row >= self.underwayTournaments.count
             {
                 return UITableViewCell()
             }
@@ -305,7 +312,7 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
         else
         if indexPath.section == self.awaitingSection
         {
-            if indexPath.row > self.awaitingTournaments.count
+            if indexPath.row >= self.awaitingTournaments.count
             {
                 return UITableViewCell()
             }
@@ -317,7 +324,7 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
         else
         if indexPath.section == self.completedSection
         {
-            if indexPath.row > self.completedTournaments.count
+            if indexPath.row >= self.completedTournaments.count
             {
                 return UITableViewCell()
             }
@@ -336,6 +343,75 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        
+        if respondingToTouch
+        {
+            return
+        }
+        
+        respondingToTouch = true
+        
+        var tempTour: Tournament = Tournament()
+        
+        if indexPath.section == self.pendingSection
+        {
+            if indexPath.row >= self.pendingTournaments.count
+            {
+                return
+            }
+            else
+            {
+                tempTour = self.pendingTournaments[indexPath.row] as! Tournament
+            }
+        }
+        else
+        if indexPath.section == self.underwaySection
+        {
+            if indexPath.row >= self.underwayTournaments.count
+            {
+                return
+            }
+            else
+            {
+                tempTour = self.underwayTournaments[indexPath.row] as! Tournament
+            }
+        }
+        else
+        if indexPath.section == self.awaitingSection
+        {
+            if indexPath.row >= self.awaitingTournaments.count
+            {
+                return
+            }
+            else
+            {
+                tempTour = self.awaitingTournaments[indexPath.row] as! Tournament
+            }
+        }
+        else
+        if indexPath.section == self.completedSection
+        {
+            if indexPath.row >= self.completedTournaments.count
+            {
+                return
+            }
+            else
+            {
+                tempTour = self.completedTournaments[indexPath.row] as! Tournament
+            }
+        }
+        
+        self.selectedTournament = tempTour
+        
+        println(tempTour.tournamentParticipantsDictAr)
+        
+        if !Bool(self.selectedTournament.tournamentParticipants.count)
+        {
+            self.selectedTournament.tournamentParticipants = Participant.parseParticipantFromJson(self.selectedTournament.tournamentParticipantsDictAr)
+            
+            println(selectedTournament.tournamentParticipants)
+        }
         
     }
     

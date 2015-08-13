@@ -316,7 +316,7 @@
         <!--BracketVC-->
         <scene sceneID="E0v-vS-7RA">
             <objects>
-                <viewController id="b6K-ZD-xSb" customClass="TBracketVC" customModule="Tournament" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="b6K-ZD-xSb" customClass="TBracketVC" customModule="Tournament" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="g2n-8u-BxK"/>
                         <viewControllerLayoutGuide type="bottom" id="LNg-8y-XIa"/>
@@ -324,8 +324,76 @@
                     <view key="view" contentMode="scaleToFill" id="4ir-6J-KWE">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TzP-gg-6xF">
+                                <rect key="frame" x="0.0" y="64" width="600" height="66"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yOG-nf-wVU">
+                                        <rect key="frame" x="8" y="8" width="584" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnR-1x-mYi">
+                                        <rect key="frame" x="8" y="37" width="584" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="bnR-1x-mYi" firstAttribute="leading" secondItem="TzP-gg-6xF" secondAttribute="leading" constant="8" id="GDb-5i-hR8"/>
+                                    <constraint firstItem="bnR-1x-mYi" firstAttribute="top" secondItem="yOG-nf-wVU" secondAttribute="bottom" constant="8" id="Sjl-zf-trR"/>
+                                    <constraint firstAttribute="trailing" secondItem="bnR-1x-mYi" secondAttribute="trailing" constant="8" id="X23-jY-VJT"/>
+                                    <constraint firstAttribute="trailing" secondItem="yOG-nf-wVU" secondAttribute="trailing" constant="8" id="bOU-su-J9A"/>
+                                    <constraint firstItem="yOG-nf-wVU" firstAttribute="top" secondItem="TzP-gg-6xF" secondAttribute="top" constant="8" id="cDh-bk-RmU"/>
+                                    <constraint firstAttribute="bottom" secondItem="bnR-1x-mYi" secondAttribute="bottom" constant="8" id="u9j-Hk-013"/>
+                                    <constraint firstItem="yOG-nf-wVU" firstAttribute="leading" secondItem="TzP-gg-6xF" secondAttribute="leading" constant="8" id="ycf-oF-zor"/>
+                                </constraints>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rdd-7Z-Rdh">
+                                <rect key="frame" x="0.0" y="130" width="600" height="470"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nKy-o4-vjh">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="470"/>
+                                        <color key="backgroundColor" red="0.1019607843" green="0.090196078430000007" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="600" id="y3E-Oi-hdT"/>
+                                            <constraint firstAttribute="height" constant="470" id="zzk-xQ-Kg2"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.1019607843" green="0.090196078430000007" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="nKy-o4-vjh" secondAttribute="trailing" id="FfJ-EU-UUf"/>
+                                    <constraint firstAttribute="bottom" secondItem="nKy-o4-vjh" secondAttribute="bottom" id="FuD-dT-7kv"/>
+                                    <constraint firstItem="nKy-o4-vjh" firstAttribute="top" secondItem="Rdd-7Z-Rdh" secondAttribute="top" id="HWH-xr-OS0"/>
+                                    <constraint firstItem="nKy-o4-vjh" firstAttribute="leading" secondItem="Rdd-7Z-Rdh" secondAttribute="leading" id="wtd-Fk-7rW"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1019607843" green="0.090196078430000007" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Rdd-7Z-Rdh" firstAttribute="top" secondItem="TzP-gg-6xF" secondAttribute="bottom" id="CuS-Gc-Mv2"/>
+                            <constraint firstItem="LNg-8y-XIa" firstAttribute="top" secondItem="Rdd-7Z-Rdh" secondAttribute="bottom" id="H2n-hO-Pbr"/>
+                            <constraint firstItem="TzP-gg-6xF" firstAttribute="top" secondItem="g2n-8u-BxK" secondAttribute="bottom" id="V7T-2L-6D1"/>
+                            <constraint firstItem="Rdd-7Z-Rdh" firstAttribute="leading" secondItem="4ir-6J-KWE" secondAttribute="leading" id="Y0Q-YI-Pzd"/>
+                            <constraint firstAttribute="trailing" secondItem="TzP-gg-6xF" secondAttribute="trailing" id="ehN-xo-NGZ"/>
+                            <constraint firstItem="TzP-gg-6xF" firstAttribute="leading" secondItem="4ir-6J-KWE" secondAttribute="leading" id="gZm-5S-UaU"/>
+                            <constraint firstAttribute="trailing" secondItem="Rdd-7Z-Rdh" secondAttribute="trailing" id="gmx-iX-6Lp"/>
+                        </constraints>
                     </view>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="contentView" destination="nKy-o4-vjh" id="Kg4-Gn-W4u"/>
+                        <outlet property="contentViewHeightConstraint" destination="zzk-xQ-Kg2" id="EjO-L5-oy5"/>
+                        <outlet property="contentViewWidthConstraint" destination="y3E-Oi-hdT" id="Dlt-82-95l"/>
+                        <outlet property="gameLabel" destination="bnR-1x-mYi" id="9dm-kF-aCm"/>
+                        <outlet property="playerCountLabel" destination="yOG-nf-wVU" id="JzX-6D-ttD"/>
+                        <outlet property="scrollView" destination="Rdd-7Z-Rdh" id="feh-UY-2v7"/>
+                        <outlet property="tournamentInfoView" destination="TzP-gg-6xF" id="aCJ-Cb-BNg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ldU-v2-q3I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

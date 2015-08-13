@@ -6,8 +6,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TParticipantView" customModule="Tournament" customModuleProvider="target">
             <connections>
-                <outlet property="avatarImageView" destination="med-hg-ZOU" id="UkS-QY-8xl"/>
-                <outlet property="avatarImageViewWidthConstraint" destination="hUh-i8-6y9" id="QvI-Kr-szO"/>
                 <outlet property="mainView" destination="jFP-uU-ILs" id="Zi2-pp-j9y"/>
                 <outlet property="participantNameLabel" destination="K6A-jX-y5W" id="22u-hO-HVK"/>
             </connections>
@@ -18,19 +16,12 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="K6A-jX-y5W">
-                    <rect key="frame" x="37" y="6" width="155" height="21"/>
+                    <rect key="frame" x="2" y="6" width="190" height="21"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="med-hg-ZOU">
-                    <rect key="frame" x="0.0" y="0.0" width="35" height="33"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="33" id="6Z7-oC-36e"/>
-                        <constraint firstAttribute="width" constant="35" id="hUh-i8-6y9"/>
-                    </constraints>
-                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AH9-pl-7s7">
                     <rect key="frame" x="0.0" y="0.0" width="192" height="33"/>
                     <state key="normal">
@@ -40,15 +31,13 @@
             </subviews>
             <color key="backgroundColor" red="0.1019607843" green="0.090196078430000007" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="K6A-jX-y5W" firstAttribute="leading" secondItem="med-hg-ZOU" secondAttribute="trailing" constant="2" id="95T-e7-Ih9"/>
                 <constraint firstAttribute="centerY" secondItem="K6A-jX-y5W" secondAttribute="centerY" id="9Yh-aL-1Ro"/>
+                <constraint firstItem="K6A-jX-y5W" firstAttribute="leading" secondItem="jFP-uU-ILs" secondAttribute="leading" constant="2" id="BTp-0D-LZq"/>
                 <constraint firstAttribute="bottom" secondItem="AH9-pl-7s7" secondAttribute="bottom" id="EzQ-eX-SEJ"/>
                 <constraint firstAttribute="trailing" secondItem="K6A-jX-y5W" secondAttribute="trailing" id="Us5-0C-yD9"/>
                 <constraint firstAttribute="trailing" secondItem="AH9-pl-7s7" secondAttribute="trailing" id="dLF-TU-KWD"/>
                 <constraint firstItem="AH9-pl-7s7" firstAttribute="top" secondItem="jFP-uU-ILs" secondAttribute="top" id="dZl-op-vZA"/>
-                <constraint firstAttribute="centerY" secondItem="med-hg-ZOU" secondAttribute="centerY" id="e7p-dQ-GQj"/>
                 <constraint firstItem="AH9-pl-7s7" firstAttribute="leading" secondItem="jFP-uU-ILs" secondAttribute="leading" id="kBt-IS-jE4"/>
-                <constraint firstItem="med-hg-ZOU" firstAttribute="leading" secondItem="jFP-uU-ILs" secondAttribute="leading" id="xzD-RB-Dau"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

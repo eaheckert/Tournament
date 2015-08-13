@@ -20,8 +20,8 @@ class Match
     var playerTwoScore: Int = 0
     var playerOnePreReqMatchID: String = ""
     var playerTwoPreReqMatchID: String = ""
-    var playerOnePreReqMatchLoser: String = ""
-    var playerTwoPreReqMatchLoser: String = ""
+    var playerOnePreReqMatchLoser: Bool = false
+    var playerTwoPreReqMatchLoser: Bool = false
     var winnerID: String = ""
     var loserID: String = ""
     
@@ -56,8 +56,8 @@ class Match
         playerTwoScore = match["playerTwoScore"]! as! Int
         playerOnePreReqMatchID = match["playerOnePreReqMatchID"]! as! String
         playerTwoPreReqMatchID = match["playerTwoPreReqMatchID"]! as! String
-        playerOnePreReqMatchLoser = match["playerOnePreReqMatchLoser"]! as! String
-        playerTwoPreReqMatchLoser = match["playerTwoPreReqMatchLoser"]! as! String
+        playerOnePreReqMatchLoser = match["playerOnePreReqMatchLoser"]! as! Bool
+        playerTwoPreReqMatchLoser = match["playerTwoPreReqMatchLoser"]! as! Bool
         winnerID = match["winnerID"]! as! String
         loserID = match["loserID"]! as! String
     }

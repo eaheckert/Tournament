@@ -65,7 +65,21 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
         
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        if segue.identifier == "To Single Elimination Bracket Segue"
+        {
+            println("Segue")
+            
+            if let vc = segue.destinationViewController as? TBracketVC
+            {
+                vc.selectedTournament = selectedTournament
+            }
+        }
+    }
+    
+    override func viewDidDisappear(animated: Bool)
+    {
         super.viewDidDisappear(animated)
         
         respondingToTouch = false
@@ -413,6 +427,8 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
         {
             self.selectedTournament.tournamentMatches = Match.parseParticipantFromJson(self.selectedTournament.tournamentMatchesDictAr)
         }
+        
+        self.performSegueWithIdentifier("To Single Elimination Bracket Segue", sender: self)
         
     }
     

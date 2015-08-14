@@ -203,11 +203,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="84" sectionHeaderHeight="31" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="YHJ-Za-x4a">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="73" sectionHeaderHeight="31" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="YHJ-Za-x4a">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                                 <color key="backgroundColor" red="0.1019607843" green="0.090196078430000007" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TTournamentCell" rowHeight="84" id="IaO-yZ-jHK" customClass="TTournamentCell" customModule="Tournament">
+                                    <tableViewCell autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TTournamentCell" rowHeight="63" id="IaO-yZ-jHK" customClass="TTournamentCell" customModule="Tournament">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IaO-yZ-jHK" id="rab-TS-tEq">
@@ -219,20 +219,17 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tournament Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eiu-yM-CXr" userLabel="Label - Tournament type">
-                                                    <rect key="frame" x="17" y="37" width="118" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" white="0.56422018350000003" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FeP-6W-SCE" userLabel="Label - Game Name">
-                                                    <rect key="frame" x="17" y="55" width="86" height="18"/>
+                                                    <rect key="frame" x="17" y="37" width="86" height="18"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="18" id="3hN-PM-ThH"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="0.56422018350000003" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uEC-ie-tm1">
-                                                    <rect key="frame" x="0.0" y="83" width="600" height="1"/>
+                                                    <rect key="frame" x="0.0" y="62" width="600" height="1"/>
                                                     <color key="backgroundColor" red="1" green="0.74901960779999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="L7i-Hd-jcq"/>
@@ -241,23 +238,20 @@
                                             </subviews>
                                             <color key="backgroundColor" red="0.1019607843" green="0.090196078430000007" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstItem="FeP-6W-SCE" firstAttribute="top" secondItem="Eiu-yM-CXr" secondAttribute="bottom" id="320-tG-zBS"/>
+                                                <constraint firstAttribute="centerY" secondItem="AYg-nP-nu7" secondAttribute="centerY" constant="9" id="4E8-r8-3aS"/>
                                                 <constraint firstAttribute="trailing" secondItem="AYg-nP-nu7" secondAttribute="trailing" constant="17" id="BXj-tL-QSW"/>
                                                 <constraint firstItem="uEC-ie-tm1" firstAttribute="leading" secondItem="rab-TS-tEq" secondAttribute="leading" id="MgP-BR-1Ed"/>
-                                                <constraint firstItem="Eiu-yM-CXr" firstAttribute="leading" secondItem="AYg-nP-nu7" secondAttribute="leading" id="YAK-bI-rph"/>
                                                 <constraint firstAttribute="trailing" secondItem="uEC-ie-tm1" secondAttribute="trailing" id="fXZ-cK-GYT"/>
-                                                <constraint firstItem="AYg-nP-nu7" firstAttribute="top" secondItem="rab-TS-tEq" secondAttribute="top" constant="8" id="k7W-5F-UBx"/>
                                                 <constraint firstItem="AYg-nP-nu7" firstAttribute="leading" secondItem="FeP-6W-SCE" secondAttribute="leading" id="opb-cH-lIX"/>
+                                                <constraint firstItem="FeP-6W-SCE" firstAttribute="top" secondItem="AYg-nP-nu7" secondAttribute="bottom" id="qrL-bw-4cq"/>
                                                 <constraint firstAttribute="bottom" secondItem="uEC-ie-tm1" secondAttribute="bottom" id="s9I-DY-Lb7"/>
                                                 <constraint firstItem="AYg-nP-nu7" firstAttribute="leading" secondItem="rab-TS-tEq" secondAttribute="leading" constant="17" id="sB6-mW-jnV"/>
-                                                <constraint firstItem="Eiu-yM-CXr" firstAttribute="top" secondItem="AYg-nP-nu7" secondAttribute="bottom" id="tPR-As-c2b"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.1019607843" green="0.090196078430000007" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="gameNameLabel" destination="FeP-6W-SCE" id="H3O-wn-BRz"/>
                                             <outlet property="titleLabel" destination="AYg-nP-nu7" id="zsN-Nh-WOL"/>
-                                            <outlet property="typeLabel" destination="Eiu-yM-CXr" id="PYG-X1-TBS"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="sectionHeaderCell" rowHeight="31" id="4di-3h-Q5q">

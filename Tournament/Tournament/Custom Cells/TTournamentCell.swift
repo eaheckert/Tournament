@@ -38,7 +38,6 @@ class TTournamentCell: UITableViewCell
         tournament = tour
         
         titleLabel.text = tournament.name
-        typeLabel.text = tournament.tournamentType
         gameNameLabel.text = tournament.gameName
     }
     

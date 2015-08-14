@@ -19,15 +19,7 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
     private var respondingToTouch: Bool = false
     private var firstTime: Bool = true
     
-    private var pendingTournaments: NSMutableArray = NSMutableArray()
-    private var underwayTournaments: NSMutableArray = NSMutableArray()
-    private var awaitingTournaments: NSMutableArray = NSMutableArray()
-    private var completedTournaments: NSMutableArray = NSMutableArray()
-    
-    private var pendingSection: Int = -1
-    private var underwaySection: Int = -1
-    private var awaitingSection: Int = -1
-    private var completedSection: Int = -1
+    private var tournaments: NSMutableArray = NSMutableArray()
     
     private var selectedTournament: Tournament = Tournament()
     
@@ -102,10 +94,7 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
         
         if currentUser != nil
         {
-            self.pendingTournaments.removeAllObjects()
-            self.underwayTournaments.removeAllObjects()
-            self.awaitingTournaments.removeAllObjects()
-            self.completedTournaments.removeAllObjects()
+            tournaments.removeAllObjects()
             
             var query = PFQuery(className: "Tournament")
             
@@ -123,37 +112,9 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
                     {
                         if let tempTour = objects?[i] as? Tournament
                         {
-                            var state = tempTour.getTournamentState()
-                            
-                            //Fill the different section array based off the tournament's section
-                            if state == Tournament.tournamentState.TOURNAMENT_PENDING
-                            {
-                                self.pendingTournaments.addObject(tempTour)
-                            }
-                            else
-                            if state == Tournament.tournamentState.TOURNAMENT_UNDERWAY
-                            {
-                                self.underwayTournaments.addObject(tempTour)
-                            }
-                            else
-                            if state == Tournament.tournamentState.TOURNAMENT_AWAITING_REVIEW
-                            {
-                                self.awaitingTournaments.addObject(tempTour)
-                            }
-                            else
-                            if state == Tournament.tournamentState.TOURNAMENT_COMPLETE
-                            {
-                                self.completedTournaments.addObject(tempTour)
-                            }
+                            self.tournaments.addObject(tempTour)
                         }
                     }
-                    
-                    //before we reload the tableview we want to reset the section values so that they can be filled as needed while reloading the tableview.
-                    //This is to prevent to sections ending up with same number if one section goes from having tournaments to not having any.
-                    self.pendingSection = -1
-                    self.underwaySection = -1
-                    self.awaitingSection = -1
-                    self.completedSection = -1
                     
                     self.tableView.reloadData()
                 }
@@ -199,61 +160,9 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
     
     //MARK: UITableView Delegate
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int
-    {
-        var numberOfSection: Int = 0;
-        
-        //Since we don't know which sections will have tournaments we load section numbers based off if that section has any tournaments.
-        if self.pendingTournaments.count > 0
-        {
-            self.pendingSection = numberOfSection
-            numberOfSection++
-        }
-        if self.underwayTournaments.count > 0
-        {
-            self.underwaySection = numberOfSection
-            numberOfSection++
-        }
-        if self.awaitingTournaments.count > 0
-        {
-            self.awaitingSection = numberOfSection
-            numberOfSection++
-        }
-        if self.completedTournaments.count > 0
-        {
-            self.completedSection = numberOfSection
-            numberOfSection++
-        }
-        
-        return numberOfSection;
-        
-    }
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        var rowCount: Int = 0
-        
-        if section == self.pendingSection
-        {
-            rowCount = self.pendingTournaments.count
-        }
-        else
-        if section == self.underwaySection
-        {
-            rowCount = self.underwayTournaments.count
-        }
-        else
-        if section == self.awaitingSection
-        {
-            rowCount = self.awaitingTournaments.count
-        }
-        else
-        if section == self.completedSection
-        {
-            rowCount = self.completedTournaments.count
-        }
-        
-        return rowCount
+        return tournaments.count
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
@@ -268,24 +177,13 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
         let titleLabel = header.viewWithTag(1) as! UILabel
         
         
-        if section == self.pendingSection
+        if tournaments.count == 1
         {
-            titleLabel.text = String(format: "Pending %i", self.pendingTournaments.count)
+            titleLabel.text = String(format: "%i Tournament", tournaments.count)
         }
         else
-        if section == self.underwaySection
         {
-            titleLabel.text = String(format: "Underway %i", self.underwayTournaments.count)
-        }
-        else
-        if section == self.awaitingSection
-        {
-            titleLabel.text = String(format: "Awaiting %i", self.awaitingTournaments.count)
-        }
-        else
-        if section == self.completedSection
-        {
-            titleLabel.text = String(format: "Completed %i", self.completedTournaments.count)
+            titleLabel.text = String(format: "%i Tournaments", tournaments.count)
         }
         
         return header
@@ -293,59 +191,20 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
-        return 84.0
+        return 63.0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         var tempTour: Tournament = Tournament()
         
-        if indexPath.section == self.pendingSection
+        if indexPath.row >= tournaments.count
         {
-            if indexPath.row >= self.pendingTournaments.count
-            {
-                return UITableViewCell()
-            }
-            else
-            {
-                tempTour = self.pendingTournaments[indexPath.row] as! Tournament
-            }
+            return UITableViewCell()
         }
         else
-        if indexPath.section == self.underwaySection
         {
-            if indexPath.row >= self.underwayTournaments.count
-            {
-                return UITableViewCell()
-            }
-            else
-            {
-                tempTour = self.underwayTournaments[indexPath.row] as! Tournament
-            }
-        }
-        else
-        if indexPath.section == self.awaitingSection
-        {
-            if indexPath.row >= self.awaitingTournaments.count
-            {
-                return UITableViewCell()
-            }
-            else
-            {
-                tempTour = self.awaitingTournaments[indexPath.row] as! Tournament
-            }
-        }
-        else
-        if indexPath.section == self.completedSection
-        {
-            if indexPath.row >= self.completedTournaments.count
-            {
-                return UITableViewCell()
-            }
-            else
-            {
-                tempTour = self.completedTournaments[indexPath.row] as! Tournament
-            }
+            tempTour = tournaments[indexPath.row] as! Tournament
         }
         
         let cell = tableView.dequeueReusableCellWithIdentifier("TTournamentCell") as! TTournamentCell
@@ -368,52 +227,13 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
         
         var tempTour: Tournament = Tournament()
         
-        if indexPath.section == self.pendingSection
+        if indexPath.row >= tournaments.count
         {
-            if indexPath.row >= self.pendingTournaments.count
-            {
-                return
-            }
-            else
-            {
-                tempTour = self.pendingTournaments[indexPath.row] as! Tournament
-            }
+            return
         }
         else
-        if indexPath.section == self.underwaySection
         {
-            if indexPath.row >= self.underwayTournaments.count
-            {
-                return
-            }
-            else
-            {
-                tempTour = self.underwayTournaments[indexPath.row] as! Tournament
-            }
-        }
-        else
-        if indexPath.section == self.awaitingSection
-        {
-            if indexPath.row >= self.awaitingTournaments.count
-            {
-                return
-            }
-            else
-            {
-                tempTour = self.awaitingTournaments[indexPath.row] as! Tournament
-            }
-        }
-        else
-        if indexPath.section == self.completedSection
-        {
-            if indexPath.row >= self.completedTournaments.count
-            {
-                return
-            }
-            else
-            {
-                tempTour = self.completedTournaments[indexPath.row] as! Tournament
-            }
+            tempTour = tournaments[indexPath.row] as! Tournament
         }
         
         self.selectedTournament = tempTour

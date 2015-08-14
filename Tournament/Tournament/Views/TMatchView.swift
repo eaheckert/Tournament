@@ -21,6 +21,13 @@ class TMatchView: UIView
     @IBOutlet weak var playerTwoView: UIView!
     @IBOutlet weak var playerTwoLabel: UILabel!
     
+    //MARK: Custom Variables
+    
+    var currentTournament: Tournament!
+    var selectedMatch: Match!
+    var playerOne: Participant!
+    var playerTwo: Participant!
+    
     //MARK: Required Methods
     
     init()
@@ -50,9 +57,29 @@ class TMatchView: UIView
     
     //MARK: Custom Methods
     
-    func loadMatch(match:Match, AndCurrentTournament:Tournament)
+    func loadMatch(match:Match, tournament:Tournament)
     {
+        selectedMatch = match
         
+        currentTournament = tournament
+        
+        if Bool(count(selectedMatch.playerOneID))
+        {
+            
+        }
+        else
+        {
+            
+        }
+        
+        if Bool(count(selectedMatch.playerTwoID))
+        {
+            
+        }
+        else
+        {
+            
+        }
     }
     
     func matchUpdated()

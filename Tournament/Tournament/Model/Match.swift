@@ -12,12 +12,9 @@ class Match
 {
     
     var matchID: String = ""
-    var matchState: String = ""
     var round: Int = 0
     var playerOneID: String = ""
     var playerTwoID: String = ""
-    var playerOneScore: Int = 0
-    var playerTwoScore: Int = 0
     var playerOnePreReqMatchID: String = ""
     var playerTwoPreReqMatchID: String = ""
     var playerOnePreReqMatchLoser: Bool = false
@@ -48,12 +45,9 @@ class Match
     func loadMatch(match:Dictionary<String,AnyObject>)
     {
         matchID = match["matchID"]! as! String
-        matchState = match["matchState"]! as! String
         round = match["round"]! as! Int
         playerOneID = match["playerOneID"]! as! String
         playerTwoID = match["playerTwoID"]! as! String
-        playerOneScore = match["playerOneScore"]! as! Int
-        playerTwoScore = match["playerTwoScore"]! as! Int
         playerOnePreReqMatchID = match["playerOnePreReqMatchID"]! as! String
         playerTwoPreReqMatchID = match["playerTwoPreReqMatchID"]! as! String
         playerOnePreReqMatchLoser = match["playerOnePreReqMatchLoser"]! as! Bool

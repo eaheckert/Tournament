@@ -32,7 +32,6 @@ class TCreateTournamentVC : UIViewController
     private var matchList: NSMutableArray = NSMutableArray()
     
     private var tournamentName: String?
-    private var tournamentType: String = "Single Elimination"
     private var currentTournament: Tournament?
     private var nextParticipantViewFrame: CGRect?
     private var participantId: Int = 0
@@ -128,16 +127,9 @@ class TCreateTournamentVC : UIViewController
             tournament["gameName"] = "Unspecified game"
         }
         
-        tournament["tournamentType"] = self.tournamentType
-        
-        tournament["tournamentState"] = "pending"
-        
         tournament["createdBy"] = User.currentUser()?.username
         
-        if self.tournamentType.uppercaseString == "Single Elimination".uppercaseString
-        {
-            self.createSingleEliminationMatches()
-        }
+        self.createMatches()
         
         if self.matchList.count < 1
         {
@@ -157,8 +149,6 @@ class TCreateTournamentVC : UIViewController
         tournament["maxNumberRounds"] = self.roundCounter
         
         tournament["participantsCount"] = self.participantList.count
-        
-        tournament["quickAdvance"] = true
         
         tournament.saveInBackgroundWithBlock { (succeeded, error:NSError?) -> Void in
             
@@ -185,12 +175,9 @@ class TCreateTournamentVC : UIViewController
     {
         return [
                 "matchID":matchId,
-                "matchState":"pending",
                 "round":self.roundCounter,
                 "playerOneID":playerOneId,
                 "playerTwoID":playerTwoId,
-                "playerOneScore":0,
-                "playerTwoScore":0,
                 "playerOnePreReqMatchID":playerOnePreReqMatch,
                 "playerTwoPreReqMatchID":playerTwoPreReqMatch,
                 "playerOnePreReqMatchLoser":playerOnePreReqMatchLoser,
@@ -227,7 +214,7 @@ class TCreateTournamentVC : UIViewController
         return Int(value) == 1
     }
     
-    func createSingleEliminationMatches()
+    func createMatches()
     {
         var participantCount: Int = self.participantList.count
         var preReqMatchCounter: Int = 0

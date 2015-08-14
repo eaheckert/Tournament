@@ -14,26 +14,10 @@ import Parse
 class Tournament: PFObject, PFSubclassing
 {
     
-    //MARK: Tournament enum
-    
-    enum tournamentState
-    {
-        case TOURNAMENT_COMPLETE
-        case TOURNAMENT_AWAITING_REVIEW
-        case TOURNAMENT_UNDERWAY
-        case TOURNAMENT_PENDING
-        case UNKNOWN_TOURNAMENT_STATE
-        
-    }
-    
     //MARK: Parse Class Variables
     
     @NSManaged var createdBy:String
     @NSManaged var name:String
-    @NSManaged var tournamentType:String
-    @NSManaged var tournamentState:String
-    @NSManaged var quickAdvance:Bool
-    @NSManaged var holdThirdPlaceMatch:Bool
     @NSManaged var gameName:String
     @NSManaged var participantsCount:Int
     @NSManaged var maxNumberRounds:Int
@@ -66,39 +50,7 @@ class Tournament: PFObject, PFSubclassing
         return "Tournament"
     }
     
-    class func getTournamentStateFromString(state:String!) -> tournamentState
-    {
-        if state.uppercaseString == "complete".uppercaseString
-        {
-            return tournamentState.TOURNAMENT_COMPLETE
-        }
-        else
-        if state.uppercaseString == "awaiting_review".uppercaseString
-        {
-            return tournamentState.TOURNAMENT_AWAITING_REVIEW
-        }
-        else
-        if state.uppercaseString == "underway".uppercaseString
-        {
-            return tournamentState.TOURNAMENT_UNDERWAY
-        }
-        else
-        if state.uppercaseString == "pending".uppercaseString
-        {
-            return tournamentState.TOURNAMENT_PENDING
-        }
-        else
-        {
-            return tournamentState.UNKNOWN_TOURNAMENT_STATE
-        }
-    }
-    
     //MARK: Methods
-    
-    func getTournamentState() -> tournamentState
-    {
-        return Tournament.getTournamentStateFromString(self.tournamentState)
-    }
     
     func convertMatches()
     {
@@ -117,11 +69,36 @@ class Tournament: PFObject, PFSubclassing
     
     func getParticipantById(partId:String!) -> Participant
     {
+        for part: Participant in tournamentParticipants
+        {
+            if part.participantId == partId
+            {
+                return part
+            }
+        }
+        
         return Participant()
     }
     
     func saveTournament()
     {
+        for match: Match in tournamentMatches
+        {
+            for var i = 0; i < tournamentMatchesDictAr.count; i++
+            {
+                let matchDict = tournamentMatchesDictAr[i] as! NSMutableDictionary
+                
+                if match.matchID == String(stringInterpolationSegment: matchDict["matchID"]!)
+                {
+                    matchDict.setValue(match.playerOneID, forKey: "playerOneID")
+                    matchDict.setValue(match.playerTwoID, forKey: "playerTwoID")
+                    
+                    matchDict.setValue(match.winnerID, forKey: "winnerID")
+                    matchDict.setValue(match.loserID, forKey: "loserID")
+                }
+            }
+        }
+        
         self.save()
     }
     

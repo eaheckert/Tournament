@@ -26,6 +26,8 @@
 		814A1E6A1B77261100DF9883 /* TCreateTournamentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814A1E691B77261100DF9883 /* TCreateTournamentVC.swift */; };
 		814A1E6C1B77E40400DF9883 /* TParticipantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814A1E6B1B77E40400DF9883 /* TParticipantView.swift */; };
 		814A1E6F1B77E45100DF9883 /* TParticipantView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 814A1E6E1B77E45100DF9883 /* TParticipantView.xib */; };
+		81C8ABB31B7EDCC20044E59D /* TRoundHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C8ABB21B7EDCC20044E59D /* TRoundHeaderView.swift */; };
+		81C8ABB51B7EDCE40044E59D /* TRoundHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81C8ABB41B7EDCE40044E59D /* TRoundHeaderView.xib */; };
 		81CD75D31B7AF78D00BD6D77 /* TBracketVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CD75D21B7AF78D00BD6D77 /* TBracketVC.swift */; };
 		81CD75D51B7C436F00BD6D77 /* TMatchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81CD75D41B7C436F00BD6D77 /* TMatchView.xib */; };
 		81CD75D71B7C455000BD6D77 /* TMatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CD75D61B7C455000BD6D77 /* TMatchView.swift */; };
@@ -68,6 +70,8 @@
 		814A1E691B77261100DF9883 /* TCreateTournamentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCreateTournamentVC.swift; sourceTree = "<group>"; };
 		814A1E6B1B77E40400DF9883 /* TParticipantView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TParticipantView.swift; path = Views/TParticipantView.swift; sourceTree = "<group>"; };
 		814A1E6E1B77E45100DF9883 /* TParticipantView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TParticipantView.xib; path = Views/nibs/TParticipantView.xib; sourceTree = "<group>"; };
+		81C8ABB21B7EDCC20044E59D /* TRoundHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TRoundHeaderView.swift; path = Views/TRoundHeaderView.swift; sourceTree = "<group>"; };
+		81C8ABB41B7EDCE40044E59D /* TRoundHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TRoundHeaderView.xib; path = Views/nibs/TRoundHeaderView.xib; sourceTree = "<group>"; };
 		81CD75D21B7AF78D00BD6D77 /* TBracketVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBracketVC.swift; sourceTree = "<group>"; };
 		81CD75D41B7C436F00BD6D77 /* TMatchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TMatchView.xib; path = Views/nibs/TMatchView.xib; sourceTree = "<group>"; };
 		81CD75D61B7C455000BD6D77 /* TMatchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TMatchView.swift; path = Views/TMatchView.swift; sourceTree = "<group>"; };
@@ -204,6 +208,7 @@
 				814A1E701B77E45900DF9883 /* nibs */,
 				814A1E6B1B77E40400DF9883 /* TParticipantView.swift */,
 				81CD75D61B7C455000BD6D77 /* TMatchView.swift */,
+				81C8ABB21B7EDCC20044E59D /* TRoundHeaderView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -213,6 +218,7 @@
 			children = (
 				814A1E6E1B77E45100DF9883 /* TParticipantView.xib */,
 				81CD75D41B7C436F00BD6D77 /* TMatchView.xib */,
+				81C8ABB41B7EDCE40044E59D /* TRoundHeaderView.xib */,
 			);
 			name = nibs;
 			sourceTree = "<group>";
@@ -323,6 +329,7 @@
 				81CD75D51B7C436F00BD6D77 /* TMatchView.xib in Resources */,
 				81499A351B70577200F502B9 /* LaunchScreen.xib in Resources */,
 				814A1E6F1B77E45100DF9883 /* TParticipantView.xib in Resources */,
+				81C8ABB51B7EDCE40044E59D /* TRoundHeaderView.xib in Resources */,
 				814A1E5D1B7453B200DF9883 /* Login.storyboard in Resources */,
 				81499A321B70577200F502B9 /* Images.xcassets in Resources */,
 			);
@@ -390,6 +397,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81C8ABB31B7EDCC20044E59D /* TRoundHeaderView.swift in Sources */,
 				814A1E6A1B77261100DF9883 /* TCreateTournamentVC.swift in Sources */,
 				813DB52B1B72FC12002A3975 /* TTournamentListVC.swift in Sources */,
 				814A1E641B75A1A200DF9883 /* TRegisterUserVC.swift in Sources */,

@@ -37,7 +37,7 @@ class Participant
     
     func loadParticipant(participant:Dictionary<String,AnyObject>)
     {
-        participantId = String(stringInterpolationSegment: participant["participantID"])
+        participantId = participant["participantID"]! as! String
         name = participant["name"]! as! String
         userName = participant["userName"]! as! String
         displayName = participant["displayName"]! as! String

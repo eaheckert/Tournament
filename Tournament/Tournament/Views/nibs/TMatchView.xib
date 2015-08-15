@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TMatchView" customModule="Tournament" customModuleProvider="target">
             <connections>
                 <outlet property="mainView" destination="poW-Ai-gfP" id="9CQ-vC-ygT"/>
+                <outlet property="matchSelectBtn" destination="kWF-aS-VoE" id="HVq-Pm-GAq"/>
                 <outlet property="playerOneNameLabel" destination="yh4-nk-fv1" id="Llo-On-Uvn"/>
                 <outlet property="playerOneView" destination="JAn-6p-ELp" id="VfR-Wy-eSE"/>
                 <outlet property="playerTwoLabel" destination="thf-me-yGP" id="508-8U-9XF"/>

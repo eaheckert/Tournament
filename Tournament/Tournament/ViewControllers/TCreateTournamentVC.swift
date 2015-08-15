@@ -46,7 +46,7 @@ class TCreateTournamentVC : UIViewController
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.title = "CREATE TOURNAMENT"
+        title = "CREATE TOURNAMENT"
         
         
         /*We want to find a basic tournament name that the user hasn't user has not used.
@@ -72,7 +72,7 @@ class TCreateTournamentVC : UIViewController
         
         }while needsTitle
         
-        self.tournamentName = possibleName
+        tournamentName = possibleName
         
         
     }
@@ -83,7 +83,7 @@ class TCreateTournamentVC : UIViewController
         
         var tempView: TParticipantView = TParticipantView()
         
-        self.nextParticipantViewFrame = CGRect(x: 0, y: 1, width: self.participantListView.frame.size.width, height: tempView.frame.size.height)
+        nextParticipantViewFrame = CGRect(x: 0, y: 1, width: participantListView.frame.size.width, height: tempView.frame.size.height)
     }
     
     override func didReceiveMemoryWarning()
@@ -97,16 +97,16 @@ class TCreateTournamentVC : UIViewController
     func createTournament()
     {
         //make sure the keyboard is no long on the screen
-        self.dismissKeyboard()
+        dismissKeyboard()
         
         //Make sure that there are atleast two participants
-        if self.participantList.count < 2
+        if participantList.count < 2
         {
             var alert = UIAlertController(title: "Error", message: "You cannot create a tournament without atleast two participants. Please add more now.", preferredStyle: UIAlertControllerStyle.Alert)
             
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             
-            self.presentViewController(alert, animated: true, completion: nil)
+            presentViewController(alert, animated: true, completion: nil)
             
             return
         }
@@ -116,11 +116,11 @@ class TCreateTournamentVC : UIViewController
         the class if you have not already created it with parse.*/
         var tournament = PFObject(className: "Tournament")
         
-        tournament["name"] = self.tournamentName
+        tournament["name"] = tournamentName
         
-        if count(self.gameNameTextField.text) > 0
+        if count(gameNameTextField.text) > 0
         {
-            tournament["gameName"] = self.gameNameTextField.text
+            tournament["gameName"] = gameNameTextField.text
         }
         else
         {
@@ -129,26 +129,26 @@ class TCreateTournamentVC : UIViewController
         
         tournament["createdBy"] = User.currentUser()?.username
         
-        self.createMatches()
+        createMatches()
         
-        if self.matchList.count < 1
+        if matchList.count < 1
         {
             var alert = UIAlertController(title: "Error", message: "Was unable to create any matches.", preferredStyle: UIAlertControllerStyle.Alert)
             
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             
-            self.presentViewController(alert, animated: true, completion: nil)
+            presentViewController(alert, animated: true, completion: nil)
             
             return
         }
         
-        tournament["tournamentParticipantsDictAr"] = self.participantList
+        tournament["tournamentParticipantsDictAr"] = participantList
         
-        tournament["tournamentMatchesDictAr"] = self.matchList
+        tournament["tournamentMatchesDictAr"] = matchList
         
-        tournament["maxNumberRounds"] = self.roundCounter
+        tournament["maxNumberRounds"] = roundCounter
         
-        tournament["participantsCount"] = self.participantList.count
+        tournament["participantsCount"] = participantList.count
         
         tournament.saveInBackgroundWithBlock { (succeeded, error:NSError?) -> Void in
             
@@ -175,7 +175,7 @@ class TCreateTournamentVC : UIViewController
     {
         return [
                 "matchID":matchId,
-                "round":self.roundCounter,
+                "round":roundCounter,
                 "playerOneID":playerOneId,
                 "playerTwoID":playerTwoId,
                 "playerOnePreReqMatchID":playerOnePreReqMatch,
@@ -189,12 +189,22 @@ class TCreateTournamentVC : UIViewController
     
     func getNextParticipant() -> NSMutableDictionary
     {
-        for var i = 0; i < self.participantList.count; i++
+        for var i = 0; i < participantList.count; i++
         {
-            var participant: NSMutableDictionary = NSMutableDictionary(dictionary: self.participantList[i] as! [NSObject : AnyObject])
+            var participant: NSMutableDictionary = participantList[i] as! NSMutableDictionary
             
-            if (participant.valueForKey(self.assignedMatchKey)?.boolValue != true)
+            print(i)
+            println(participant)
+            
+            var isUsed = participant.valueForKey(assignedMatchKey) as! Bool
+            
+            if !isUsed
             {
+                participant.setObject(true, forKey: assignedMatchKey)
+                
+                print("Used participant: ")
+                println(participant)
+                
                 return participant
             }
         }
@@ -216,19 +226,19 @@ class TCreateTournamentVC : UIViewController
     
     func createMatches()
     {
-        var participantCount: Int = self.participantList.count
+        var participantCount: Int = participantList.count
         var preReqMatchCounter: Int = 0
         var matchID: Int = 0
         var numberToEliminateRoundOne: Int = 0
         var numberOfByes: Int = 0
         
-        self.roundCounter = 0
+        roundCounter = 0
         
         /*For the tournament to work correctly you need a number of participants
         that are a power of two. If the number of participants are not a power
         of two you will need to find the number of people who need to be eliminated
         in round one so that round two is a power of two.*/
-        while !self.isPowerOfTwo(participantCount)
+        while !isPowerOfTwo(participantCount)
         {
             numberToEliminateRoundOne++
             participantCount--
@@ -241,24 +251,23 @@ class TCreateTournamentVC : UIViewController
         {
             numberOfByes = (participantCount - numberToEliminateRoundOne)
             
-            self.roundCounter++
+            roundCounter++
             
             for var i = 0,j = 0;j < numberToEliminateRoundOne;i += 2, j++
             {
-                var playerOne = self.getNextParticipant()
-                playerOne.setValue(true, forKey: self.assignedMatchKey)
+                var playerOne = getNextParticipant()
                 
-                var playerTwo = self.getNextParticipant()
-                playerTwo.setValue(true, forKey: self.assignedMatchKey)
+                var playerTwo = getNextParticipant()
                 
-                var playerOneId = String(stringInterpolationSegment: playerOne.valueForKey("participantID"))
-                var playerTwoId = String(stringInterpolationSegment: playerTwo.valueForKey("participantID"))
+                var playerOneId = playerOne.valueForKey("participantID") as! String
+                var playerTwoId = playerTwo.valueForKey("participantID") as! String
+                
                 var playerOnePreReqMatch: String = ""
                 var playerTwoPreReqMatch: String = ""
                 
-                var match = self.createMatchWithId(String(matchID), playerOneId: playerOneId, playerTwoId: playerTwoId, playerOnePreReqMatch: playerOnePreReqMatch, playerTwoPreReqMatch: playerTwoPreReqMatch, playerOnePreReqMatchLoser: false, playerTwoPreReqMatchLoser: false)
+                var match = createMatchWithId(String(matchID), playerOneId: playerOneId, playerTwoId: playerTwoId, playerOnePreReqMatch: playerOnePreReqMatch, playerTwoPreReqMatch: playerTwoPreReqMatch, playerOnePreReqMatchLoser: false, playerTwoPreReqMatchLoser: false)
                 
-                self.matchList.addObject(match)
+                matchList.addObject(match)
                 
                 matchID += 1
             }
@@ -266,7 +275,7 @@ class TCreateTournamentVC : UIViewController
         
         do
         {
-            self.roundCounter++
+            roundCounter++
             
             for var i = 0; i < participantCount; i += 2
             {
@@ -281,22 +290,20 @@ class TCreateTournamentVC : UIViewController
                 make round one matches. Round one matches are different from other
                 matches due to the fact they do not have prerequisite matches and
                 participants will be assigned to a match.*/
-                if self.roundCounter == 1
+                if roundCounter == 1
                 {
-                    playerOne = self.getNextParticipant()
-                    playerOne.setValue(true, forKey: self.assignedMatchKey)
+                    playerOne = getNextParticipant()
                     
-                    playerTwo = self.getNextParticipant()
-                    playerTwo.setValue(true, forKey: self.assignedMatchKey)
+                    playerTwo = getNextParticipant()
                     
-                    playerOneId = String(stringInterpolationSegment: playerOne.valueForKey("participantID"))
-                    playerTwoId = String(stringInterpolationSegment: playerTwo.valueForKey("participantID"))
+                    playerOneId = playerOne.valueForKey("participantID") as! String
+                    playerTwoId = playerTwo.valueForKey("participantID") as! String
                     
                     playerOnePreReqMatch = ""
                     playerTwoPreReqMatch = ""
                 }
                 else
-                if self.roundCounter == 2 && Bool(numberOfByes)
+                if roundCounter == 2 && Bool(numberOfByes)
                 {
                     /*If the number of byes is less then the number of people to
                     eliminated in round one it means that two matchs will have
@@ -309,10 +316,9 @@ class TCreateTournamentVC : UIViewController
                     {
                         if numberToEliminateRoundOne > preReqMatchCounter
                         {
-                            playerOne = self.getNextParticipant()
-                            playerOne.setValue(true, forKey: self.assignedMatchKey)
+                            playerOne = getNextParticipant()
                             
-                            playerOneId = String(stringInterpolationSegment: playerOne.valueForKey("participantID"))
+                            playerOneId = playerOne.valueForKey("participantID")  as! String
                             
                             playerTwoPreReqMatch = String(preReqMatchCounter)
                             
@@ -320,14 +326,12 @@ class TCreateTournamentVC : UIViewController
                         }
                         else
                         {
-                            playerOne = self.getNextParticipant()
-                            playerOne.setValue(true, forKey: self.assignedMatchKey)
+                            playerOne = getNextParticipant()
                             
-                            playerTwo = self.getNextParticipant()
-                            playerTwo.setValue(true, forKey: self.assignedMatchKey)
+                            playerTwo = getNextParticipant()
                             
-                            playerOneId = String(stringInterpolationSegment: playerOne.valueForKey("participantID"))
-                            playerTwoId = String(stringInterpolationSegment: playerTwo.valueForKey("participantID"))
+                            playerOneId = playerOne.valueForKey("participantID") as! String
+                            playerTwoId = playerTwo.valueForKey("participantID") as! String
                             
                             playerOnePreReqMatch = ""
                             playerTwoPreReqMatch = ""
@@ -337,10 +341,9 @@ class TCreateTournamentVC : UIViewController
                     {
                         if numberOfByes > preReqMatchCounter
                         {
-                            playerOne = self.getNextParticipant()
-                            playerOne.setValue(true, forKey: self.assignedMatchKey)
+                            playerOne = getNextParticipant()
                             
-                            playerOneId = String(stringInterpolationSegment: playerOne.valueForKey("participantID"))
+                            playerOneId = playerOne.valueForKey("participantID") as! String
                             
                             playerTwoPreReqMatch = String(preReqMatchCounter)
                             
@@ -371,9 +374,9 @@ class TCreateTournamentVC : UIViewController
                 }
         
                 
-                var match = self.createMatchWithId(String(matchID), playerOneId: playerOneId, playerTwoId: playerTwoId, playerOnePreReqMatch: playerOnePreReqMatch, playerTwoPreReqMatch: playerTwoPreReqMatch, playerOnePreReqMatchLoser: false, playerTwoPreReqMatchLoser: false)
+                var match = createMatchWithId(String(matchID), playerOneId: playerOneId, playerTwoId: playerTwoId, playerOnePreReqMatch: playerOnePreReqMatch, playerTwoPreReqMatch: playerTwoPreReqMatch, playerOnePreReqMatchLoser: false, playerTwoPreReqMatchLoser: false)
                 
-                self.matchList.addObject(match)
+                matchList.addObject(match)
                 
                 matchID += 1
             
@@ -386,9 +389,9 @@ class TCreateTournamentVC : UIViewController
     
     func dismissKeyboard()
     {
-        self.tournamentNameTextField.resignFirstResponder()
-        self.gameNameTextField.resignFirstResponder()
-        self.participantNameEntryTextField.resignFirstResponder()
+        tournamentNameTextField.resignFirstResponder()
+        gameNameTextField.resignFirstResponder()
+        participantNameEntryTextField.resignFirstResponder()
     }
     
     //MARK: IB Methods
@@ -396,59 +399,69 @@ class TCreateTournamentVC : UIViewController
     @IBAction func onAddParticipantAction(sender: AnyObject)
     {
         //check to make sure their is a name in the participant textfield
-        if count(self.participantNameEntryTextField.text) < 1
+        if count(participantNameEntryTextField.text) < 1
         {
             var alert = UIAlertController(title: "Error", message: "Please enter the name of a participant.", preferredStyle: UIAlertControllerStyle.Alert)
             
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             
-            self.presentViewController(alert, animated: true, completion: nil)
+            presentViewController(alert, animated: true, completion: nil)
             
             return
         }
         
         //If there is a name make sure that the name hasn't been entered already
-        if (self.participantNameList as NSArray).containsObject(self.participantNameEntryTextField.text)
+        if (participantNameList as NSArray).containsObject(participantNameEntryTextField.text)
         {
             var alert = UIAlertController(title: "Error", message: "A participant by that name has already been created.", preferredStyle: UIAlertControllerStyle.Alert)
             
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             
-            self.presentViewController(alert, animated: true, completion: nil)
+            presentViewController(alert, animated: true, completion: nil)
             
             return
         }
         
         /*As long as ther is a name in the participantNameTextField we add it to the list of participants and display the name on a list view for the 
         user to be able to see who has already been added to the tournament.*/
-        var participantName = self.participantNameEntryTextField.text
+        var participantName = participantNameEntryTextField.text
         
-        self.participantNameEntryTextField.text = ""
+        participantNameEntryTextField.text = ""
         
-        var participantDict = ["participantID":self.participantId, "name":participantName, "userName":participantName, self.assignedMatchKey:false, "displayName":participantName]
+        var participantDict:NSMutableDictionary = NSMutableDictionary()
         
-        self.participantList.addObject(participantDict)
+        participantDict.setObject(String(participantId), forKey: "participantID")
+        participantDict.setObject(participantName, forKey: "name")
+        participantDict.setObject(participantName, forKey: "userName")
+        participantDict.setObject(false, forKey: assignedMatchKey)
+        participantDict.setObject(participantName, forKey: "displayName")
         
-        self.participantId += 1
+        
+        
+//        = ["participantID":String(participantId), "name":participantName, "userName":participantName, assignedMatchKey:false, "displayName":participantName]
+        
+        participantList.addObject(participantDict)
+        
+        participantId += 1
         
         var participantView: TParticipantView = TParticipantView()
         
-        participantView.frame = self.nextParticipantViewFrame!
+        participantView.frame = nextParticipantViewFrame!
         
         participantView.loadParticipantName(participantName)
         
-        if self.participantListViewHeightConstraint.constant == 0
+        if participantListViewHeightConstraint.constant == 0
         {
-            self.participantListViewHeightConstraint.constant = 1
+            participantListViewHeightConstraint.constant = 1
         }
         
-        var constaint: CGFloat = ((self.nextParticipantViewFrame!.size.height + self.nextParticipantViewFrame!.origin.y) + 1)
+        var constaint: CGFloat = ((nextParticipantViewFrame!.size.height + nextParticipantViewFrame!.origin.y) + 1)
         
-        self.participantListViewHeightConstraint.constant = constaint
+        participantListViewHeightConstraint.constant = constaint
         
-        self.nextParticipantViewFrame!.origin.y = constaint
+        nextParticipantViewFrame!.origin.y = constaint
         
-        self.participantListView.addSubview(participantView)
+        participantListView.addSubview(participantView)
     }
     
     @IBAction func onSelectTournamentTypeAction(sender: AnyObject)
@@ -457,9 +470,9 @@ class TCreateTournamentVC : UIViewController
     
     @IBAction func onCreateTournamentAction(sender: AnyObject)
     {
-        if count(self.tournamentNameTextField.text) < 1
+        if count(tournamentNameTextField.text) < 1
         {
-            var alert = UIAlertController(title: "Warning", message: String(format: "You are about to create a tournament with no name. Do you want to us %@ as your tournament name?", self.tournamentName!), preferredStyle: UIAlertControllerStyle.Alert)
+            var alert = UIAlertController(title: "Warning", message: String(format: "You are about to create a tournament with no name. Do you want to us %@ as your tournament name?", tournamentName!), preferredStyle: UIAlertControllerStyle.Alert)
             
             alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: { (alert: UIAlertAction!) -> Void in
                 
@@ -469,7 +482,7 @@ class TCreateTournamentVC : UIViewController
             
             alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler: nil))
             
-            self.presentViewController(alert, animated: true, completion: nil)
+            presentViewController(alert, animated: true, completion: nil)
             
             return
         }
@@ -477,20 +490,20 @@ class TCreateTournamentVC : UIViewController
         var user: User = User.currentUser()! as User
         var tournamentNames = user.tournamentNames
         
-        if contains(tournamentNames, self.tournamentNameTextField.text!)
+        if contains(tournamentNames, tournamentNameTextField.text!)
         {
-            var alert = UIAlertController(title: "Error", message: String(format: "You already have a tournament with the name %@. Please use a different name.", self.tournamentNameTextField.text!), preferredStyle: UIAlertControllerStyle.Alert)
+            var alert = UIAlertController(title: "Error", message: String(format: "You already have a tournament with the name %@. Please use a different name.", tournamentNameTextField.text!), preferredStyle: UIAlertControllerStyle.Alert)
             
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             
-            self.presentViewController(alert, animated: true, completion: nil)
+            presentViewController(alert, animated: true, completion: nil)
             
             return
         }
         
-        self.tournamentName = self.tournamentNameTextField.text
+        tournamentName = tournamentNameTextField.text
         
-        self.createTournament()
+        createTournament()
     }
     
 }

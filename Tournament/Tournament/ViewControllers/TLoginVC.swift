@@ -34,7 +34,7 @@ class TLoginVC: UIViewController
         
         //We do this check so that if we come back from registering user with a new active user they don't need to sign-in.
         //This is because the registering process signs the user in at the same time.
-        var currentUser = User.currentUser()
+        let currentUser = User.currentUser()
         
         if currentUser != nil
         {
@@ -60,7 +60,7 @@ class TLoginVC: UIViewController
         //First check to make sure that the user has entered information the meets the requirements
         if self.validateLoginInformation()
         {
-            [PFUser .logInWithUsernameInBackground(self.usernameTextField.text, password: self.passwordTextField.text, block: { (user: PFUser?, error: NSError?) -> Void in
+            [PFUser .logInWithUsernameInBackground(self.usernameTextField.text!, password: self.passwordTextField.text!, block: { (user: PFUser?, error: NSError?) -> Void in
                 
                 if user != nil
                 {
@@ -68,7 +68,7 @@ class TLoginVC: UIViewController
                 }
                 else
                 {
-                    var alert = UIAlertController(title: "Error", message: error?.description, preferredStyle: UIAlertControllerStyle.Alert)
+                    let alert = UIAlertController(title: "Error", message: error?.description, preferredStyle: UIAlertControllerStyle.Alert)
                     
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
                     
@@ -79,7 +79,7 @@ class TLoginVC: UIViewController
         }
         else
         {
-            var alert = UIAlertController(title: "Error", message: "The information you entered did not meet the minimum requirement for a username and password. Please try again.", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Error", message: "The information you entered did not meet the minimum requirement for a username and password. Please try again.", preferredStyle: UIAlertControllerStyle.Alert)
             
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             
@@ -92,11 +92,11 @@ class TLoginVC: UIViewController
     
     func validateLoginInformation() -> Bool
     {
-        if count(self.usernameTextField.text) < 0
+        if usernameTextField.text?.characters.count < 0
         {
             return false
         }
-        if count(self.passwordTextField.text) < 6
+        if passwordTextField.text?.characters.count < 6
         {
             return false
         }

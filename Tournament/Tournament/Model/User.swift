@@ -9,7 +9,7 @@
 import Foundation
 import Parse
 
-class User: PFUser, PFSubclassing
+class User: PFUser
 {
     
     @NSManaged var tournamentNames: [String]

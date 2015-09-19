@@ -30,8 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate
             if let keysDict = NSDictionary(contentsOfFile: path) as? Dictionary<String, String>
             {
                 //Make sure that values unwrap to string values.
-                var applicationIdString:String  = keysDict["parseApplicationId"]!
-                var clientKeyString:String  = keysDict["parseClientKey"]!
+                let applicationIdString:String  = keysDict["parseApplicationId"]!
+                let clientKeyString:String  = keysDict["parseClientKey"]!
                 
                 //Parse Set ApplicationId requires string values for both the ApplicationId and ClientKey
                 //These values tie the app to your Parse App
@@ -39,12 +39,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate
             }
             else
             {
-                print("ERROR: The keys.plist does not contain a NSDictionary.")
+                print("ERROR: The keys.plist does not contain a NSDictionary.", terminator: "")
             }
         }
         else
         {
-            print("ERROR: There is currently no keys.plist.")
+            print("ERROR: There is currently no keys.plist.", terminator: "")
         }
         
         

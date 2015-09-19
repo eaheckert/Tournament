@@ -23,7 +23,7 @@ class Participant
         {
             if let json = object as? Dictionary<String,AnyObject>
             {
-                var participant: Participant = Participant()
+                let participant: Participant = Participant()
                 
                 participant.loadParticipant(json)
                 

@@ -21,5 +21,9 @@ This is a Swift version of an app I started working on perviously [here](https:/
     3. parseApplicationId needs the value from Application ID
     4. parseClientKey needs the value from Client Key
 
+### Latest Update ###
+
+The code bases has been updated to work with Swift 2.0 and Xcode 7 and runs on iOS 9
+
 ### Who do I talk to? ###
 Current primary developer can be reached at eaheckert@gmail.com

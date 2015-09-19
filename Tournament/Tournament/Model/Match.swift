@@ -30,7 +30,7 @@ class Match
         {
             if let json = object as? Dictionary<String,AnyObject>
             {
-                var match: Match = Match()
+                let match: Match = Match()
                 
                 match.loadMatch(json)
                 

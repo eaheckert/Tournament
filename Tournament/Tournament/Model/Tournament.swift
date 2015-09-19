@@ -61,7 +61,7 @@ class Tournament: PFObject, PFSubclassing
     
     func convertParticipants()
     {
-        print(tournamentParticipantsDictAr)
+        print(tournamentParticipantsDictAr, terminator: "")
 //        var partAr: Array<Participant> = Participant.parseParticipantFromJson(self.tournamentParticipantsDictAr)
         
         self.tournamentParticipants = []

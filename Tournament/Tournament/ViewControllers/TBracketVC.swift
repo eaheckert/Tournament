@@ -45,7 +45,7 @@ class TBracketVC: UIViewController
         //We can assume there will never be one player so players should always be plural
         playerCountLabel.text = String(format: "%i Players", selectedTournament.participantsCount)
         
-        if count(selectedTournament.gameName) > 0
+        if selectedTournament.gameName.characters.count > 0
         {
             self.gameLabel.text = selectedTournament.gameName
         }
@@ -75,7 +75,7 @@ class TBracketVC: UIViewController
         
         for var i: Int = 1; i <= self.selectedTournament.maxNumberRounds; i++
         {
-            var headerView: TRoundHeaderView = TRoundHeaderView()
+            let headerView: TRoundHeaderView = TRoundHeaderView()
             
             headerView.frame = CGRect(origin: CGPoint(x: xPos, y: yPos), size: headerView.frame.size)
             
@@ -102,7 +102,7 @@ class TBracketVC: UIViewController
                 
                 if match.round == i
                 {
-                    var matchView = TMatchView()
+                    let matchView = TMatchView()
                     
                     matchView.frame = CGRect(origin: CGPoint(x: xPos, y: yPos), size: matchView.frame.size)
                     
@@ -111,12 +111,12 @@ class TBracketVC: UIViewController
                         var playerOnePreMatch: TMatchView?
                         var playerTwoPreMatch: TMatchView?
                         
-                        if Bool(count(match.playerOnePreReqMatchID))
+                        if Bool(match.playerOnePreReqMatchID.characters.count)
                         {
                             playerOnePreMatch = matchViews[match.playerOnePreReqMatchID] as? TMatchView
                         }
                         
-                        if Bool(count(match.playerTwoPreReqMatchID))
+                        if Bool(match.playerTwoPreReqMatchID.characters.count)
                         {
                             playerTwoPreMatch = matchViews[match.playerTwoPreReqMatchID] as? TMatchView
                         }
@@ -124,8 +124,8 @@ class TBracketVC: UIViewController
                         if((playerOnePreMatch != nil) && (playerTwoPreMatch != nil))
                         {
                             
-                            var playerOneCenterY: CGFloat = playerOnePreMatch!.center.y
-                            var playerTwoCenterY: CGFloat = playerTwoPreMatch!.center.y
+                            let playerOneCenterY: CGFloat = playerOnePreMatch!.center.y
+                            let playerTwoCenterY: CGFloat = playerTwoPreMatch!.center.y
                             
                             matchView.center = CGPoint(x: matchView.center.x, y: ((playerOneCenterY + playerTwoCenterY)/2))
 
@@ -163,7 +163,7 @@ class TBracketVC: UIViewController
                 }
                 else
                 {
-                    var matchView: TMatchView = TMatchView()
+                    let matchView: TMatchView = TMatchView()
                     
                     xPos += (matchView.frame.size.width * 1.5)
                     

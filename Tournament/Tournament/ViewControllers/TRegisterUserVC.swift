@@ -47,7 +47,7 @@ class  TRegisterUserVC: UIViewController
     {
         if self.validateUserInformation()
         {
-            var user:User = User()
+            let user:User = User()
             
             user.username = self.usernameTextField.text
             user.password = self.passwordTextField.text
@@ -56,9 +56,9 @@ class  TRegisterUserVC: UIViewController
             [user .signUpInBackgroundWithBlock({ (succeeded: Bool, error: NSError?) -> Void in
                 if let error = error
                 {
-                    let errorString = error.userInfo?["error"] as? String
+                    let errorString = error.userInfo["error"] as? String
                     
-                    var alert = UIAlertController(title: "Error", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
+                    let alert = UIAlertController(title: "Error", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
                     
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
                     
@@ -83,16 +83,16 @@ class  TRegisterUserVC: UIViewController
     func validateUserInformation() -> Bool
     {
         //First check to see if the user has entered sometype of username
-        if count(self.usernameTextField.text) <= 0
+        if self.usernameTextField.text!.characters.count <= 0
         {
             
             return false
         }
         
         //make sure the that there is something in the email field
-        if count(self.usernameTextField.text) <= 0
+        if self.usernameTextField.text!.characters.count <= 0
         {
-            var alert = UIAlertController(title: "Error", message: "Please enter an email address.", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Error", message: "Please enter an email address.", preferredStyle: UIAlertControllerStyle.Alert)
             
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             
@@ -106,13 +106,13 @@ class  TRegisterUserVC: UIViewController
               The reason we do this is because there could be one person with a strange email so we want
               a very permissive email check.*/
             
-            var emailStr = self.emailTextField.text
-            var delimiter = "@"
-            var stringAr = emailStr.componentsSeparatedByString(delimiter)
+            let emailStr = self.emailTextField.text
+            let delimiter = "@"
+            let stringAr = emailStr!.componentsSeparatedByString(delimiter)
             
             if stringAr.count < 2
             {
-                var alert = UIAlertController(title: "Error", message: "Please enter a valid email address.", preferredStyle: UIAlertControllerStyle.Alert)
+                let alert = UIAlertController(title: "Error", message: "Please enter a valid email address.", preferredStyle: UIAlertControllerStyle.Alert)
                 
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
                 
@@ -123,9 +123,9 @@ class  TRegisterUserVC: UIViewController
         }
         
         //make sure the that the password is long enough
-        if count(self.passwordTextField.text) < 6
+        if self.passwordTextField.text?.characters.count < 6
         {
-            var alert = UIAlertController(title: "Error", message: "Password is not long enough. Please enter a long password.", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Error", message: "Password is not long enough. Please enter a long password.", preferredStyle: UIAlertControllerStyle.Alert)
             
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             
@@ -137,7 +137,7 @@ class  TRegisterUserVC: UIViewController
         //make sure that the password and the password confirm both match
         if self.passwordTextField.text != self.confirmPasswordTextField.text
         {
-            var alert = UIAlertController(title: "Error", message: "Passwords don't match. Please make sure both passwords match.", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Error", message: "Passwords don't match. Please make sure both passwords match.", preferredStyle: UIAlertControllerStyle.Alert)
             
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             

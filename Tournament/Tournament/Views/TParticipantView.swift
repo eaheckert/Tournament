@@ -31,7 +31,7 @@ class TParticipantView: UIView
     
     required init(coder aDecoder: NSCoder)
     {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
         NSBundle.mainBundle().loadNibNamed("TParticipantView", owner: self, options: nil)
         self.addSubview(self.mainView)
         self.frame = self.mainView.frame

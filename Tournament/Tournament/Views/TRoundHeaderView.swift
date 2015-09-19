@@ -28,7 +28,7 @@ class TRoundHeaderView: UIView
         self.frame = self.mainView.frame
     }
     
-    required init(coder aDecoder: NSCoder)
+    required init?(coder aDecoder: NSCoder)
     {
         super.init(coder: aDecoder)
         NSBundle.mainBundle().loadNibNamed("TRoundHeaderView", owner: self, options: nil)

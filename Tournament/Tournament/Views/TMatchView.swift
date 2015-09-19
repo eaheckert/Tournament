@@ -42,7 +42,7 @@ class TMatchView: UIView
     
     required init(coder aDecoder: NSCoder)
     {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
         NSBundle.mainBundle().loadNibNamed("TMatchView", owner: self, options: nil)
         self.addSubview(self.mainView)
         self.frame = self.mainView.frame
@@ -86,7 +86,7 @@ class TMatchView: UIView
         
         currentTournament = tournament
         
-        if Bool(count(selectedMatch.playerOneID))
+        if Bool(selectedMatch.playerOneID.characters.count)
         {
             playerOne = currentTournament.getParticipantById(selectedMatch.playerOneID)
             
@@ -99,7 +99,7 @@ class TMatchView: UIView
             playerOneNameLabel.text = ""
         }
         
-        if Bool(count(selectedMatch.playerTwoID))
+        if Bool(selectedMatch.playerTwoID.characters.count)
         {
             playerTwo = currentTournament.getParticipantById(selectedMatch.playerTwoID)
             
@@ -112,7 +112,7 @@ class TMatchView: UIView
             playerTwoLabel.text = ""
         }
         
-        if((count(selectedMatch.winnerID) > 0) && (count(selectedMatch.winnerID)) > 0)
+        if((selectedMatch.winnerID.characters.count > 0) && (selectedMatch.winnerID.characters.count) > 0)
         {
             if selectedMatch.winnerID == playerOne.participantId
             {

@@ -36,8 +36,8 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
     {
         super.viewWillAppear(animated)
         
-        var plusImage = UIImage(named: "white_plus")?.imageWithRenderingMode(.AlwaysOriginal)
-        var barButton = UIBarButtonItem(image: plusImage, style: UIBarButtonItemStyle.Plain, target: self, action: "onCreateTournamentAction")
+        let plusImage = UIImage(named: "white_plus")?.imageWithRenderingMode(.AlwaysOriginal)
+        let barButton = UIBarButtonItem(image: plusImage, style: UIBarButtonItemStyle.Plain, target: self, action: "onCreateTournamentAction")
         self.parentViewController?.navigationItem.rightBarButtonItem = barButton
         
     }
@@ -61,7 +61,7 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
     {
         if segue.identifier == "To Single Elimination Bracket Segue"
         {
-            println("Segue")
+            print("Segue")
             
             if let vc = segue.destinationViewController as? TBracketVC
             {
@@ -90,15 +90,15 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
     {
         //Check to see if the user has a username
         //If not load loginVC
-        var currentUser = User.currentUser()
+        let currentUser = User.currentUser()
         
         if currentUser != nil
         {
             tournaments.removeAllObjects()
             
-            var query = PFQuery(className: "Tournament")
+            let query = PFQuery(className: "Tournament")
             
-            var username = currentUser?.username
+            let username = currentUser?.username
             
             query.whereKey("createdBy", equalTo:username!)
             
@@ -106,7 +106,7 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
                 
                 if error == nil
                 {
-                    println("objects: ", objects)
+                    print("objects: ", objects)
                     
                     for var i = 0; i < objects?.count; i++
                     {
@@ -120,13 +120,13 @@ class TTournamentListVC: UIViewController, UITableViewDataSource, UITableViewDel
                 }
                 else
                 {
-                    println("Error: \(error!) \(error!.userInfo!)")
+                    print("Error: \(error!) \(error!.userInfo)")
                 }
             }
         }
         else
         {
-            println("No userName")
+            print("No userName")
             
             //If there is no user name we know there is no user.
             //So we present the login view controller.

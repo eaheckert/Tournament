@@ -21,7 +21,7 @@ class TMatchView: UIView
     @IBOutlet weak var playerTwoView: UIView!
     @IBOutlet weak var playerTwoLabel: UILabel!
     
-    @IBOutlet weak var matchSelectBtn: UIButton!
+//    @IBOutlet weak var matchSelectBtn: UIButton!
     
     //MARK: Custom Variables
     
@@ -136,14 +136,14 @@ class TMatchView: UIView
             }
         }
         
-        if((playerOne != nil) && (playerTwo != nil))
-        {
-            matchSelectBtn.enabled = true
-        }
-        else
-        {
-            matchSelectBtn.enabled = false
-        }
+//        if((playerOne != nil) && (playerTwo != nil))
+//        {
+//            matchSelectBtn.enabled = true
+//        }
+//        else
+//        {
+//            matchSelectBtn.enabled = false
+//        }
     }
     
     func matchUpdated()
